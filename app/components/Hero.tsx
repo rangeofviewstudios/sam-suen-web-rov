@@ -1,13 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { SiSpotify, SiApplemusic } from "react-icons/si";
+import { Headphones } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
+import { LINKS } from "../lib/links";
 import SplitText from "./SplitText";
+import StreamingDrawer from "./StreamingDrawer";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   const r3 = useReveal();
   const r4 = useReveal();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <section className={styles.hero} id="hero">
@@ -69,12 +75,37 @@ export default function Hero() {
             ref={r4.ref}
             className={`${styles.cta} reveal-up delay-4 ${r4.isVisible ? "visible" : ""}`}
           >
-            <a href="#portfolio" className={styles.btnPrimary}>
-              <span className={styles.btnText}>View Portfolio</span>
-              <span className={styles.btnArrow}>→</span>
-            </a>
+            <button
+              className={styles.listenBtn}
+              onClick={() => setDrawerOpen(true)}
+              type="button"
+            >
+              <Headphones size={16} />
+              <span>Listen Now</span>
+            </button>
 
-            <a href="#about" className={styles.btnCircle} aria-label="Learn more about Sam Suen">
+            <div className={styles.platformIcons}>
+              <a
+                href={LINKS.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.platformIcon}
+                aria-label="Spotify"
+              >
+                <SiSpotify size={16} />
+              </a>
+              <a
+                href={LINKS.appleMusic}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.platformIcon}
+                aria-label="Apple Music"
+              >
+                <SiApplemusic size={16} />
+              </a>
+            </div>
+
+            <a href="#portfolio" className={styles.btnCircle} aria-label="View Portfolio">
               ↗
             </a>
           </div>
@@ -101,6 +132,9 @@ export default function Hero() {
       <div className={styles.scrollIndicator} aria-hidden>
         <div className={styles.scrollLine} />
       </div>
+
+      {/* Streaming drawer */}
+      <StreamingDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </section>
   );
 }

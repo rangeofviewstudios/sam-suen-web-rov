@@ -67,7 +67,7 @@ export default function Footer() {
           </nav>
           <div className="footer-contact">
             <a
-              href="https://instagram.com/samsuen"
+              href="https://www.instagram.com/samsuenofficial/"
               className="footer-contact-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -76,7 +76,7 @@ export default function Footer() {
               Instagram
             </a>
             <a
-              href="https://open.spotify.com"
+              href="https://open.spotify.com/artist/0xXkuHzIgsvT7a00POWMIK?si=E4RShAnQTe6HyvLjyAuZuA"
               className="footer-contact-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -85,7 +85,7 @@ export default function Footer() {
               Spotify
             </a>
             <a
-              href="https://music.apple.com"
+              href="https://music.apple.com/us/artist/sam-suen/1561994926"
               className="footer-contact-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -95,11 +95,11 @@ export default function Footer() {
             </a>
             <div className="footer-contact-divider" />
             <a
-              href="mailto:rangeofviewmusic@gmail.com"
+              href="mailto:contact@rovstudios.com"
               className="footer-contact-link"
             >
               <FiMail className="footer-contact-icon" />
-              rangeofviewmusic@gmail.com
+              contact@rovstudios.com
             </a>
           </div>
         </div>

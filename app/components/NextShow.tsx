@@ -67,10 +67,10 @@ export default function NextShow() {
             <div className="show-info-item">
               <span className="show-info-label">Inquiries</span>
               <a
-                href="mailto:rangeofviewmusic@gmail.com"
+                href="mailto:contact@rovstudios.com"
                 className="show-info-value show-info-cta"
               >
-                rangeofviewmusic@gmail.com
+                contact@rovstudios.com
               </a>
             </div>
           </div>

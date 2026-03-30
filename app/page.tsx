@@ -7,6 +7,8 @@ import Portfolio from "./components/Portfolio";
 import MusicVideo from "./components/MusicVideo";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import FloatingListenPill from "./components/FloatingListenPill";
+import MobileStreamingPopup from "./components/MobileStreamingPopup";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
       <MusicVideo />
       <Portfolio />
       <Footer />
+      <FloatingListenPill />
+      <MobileStreamingPopup />
     </>
   );
 }
