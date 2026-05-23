@@ -16,7 +16,7 @@ const EXPECTED_HASH =
   "73aea6f36123aba890ebe6c821410b529a2ad9a3daa30cad7daa1e28097c58b6";
 // Password: "samasiafest" (case-insensitive)
 
-const AUDIO_SRC = "/audio/cantkeepwaitingsnip.mp3";
+const AUDIO_SRC = "/audio/5. Efforts and Sincerity (SAM SUEN).mp3";
 const UNLOCK_KEY = "ws2026-unlocked";
 
 async function sha256(input: string): Promise<string> {
