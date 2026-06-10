@@ -27,7 +27,6 @@ const item: Variants = {
 
 export default function LoginPage() {
   const router = useRouter();
-  const supabase = createClient();
 
   const [mode, setMode] = useState<Mode>("signin");
   const [email, setEmail] = useState("");
@@ -42,6 +41,10 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     setMessage(null);
+
+    // Created here (in the browser), not during render, so a missing env
+    // var at build time can't crash the static prerender of this page.
+    const supabase = createClient();
 
     if (mode === "signin") {
       const { error } = await supabase.auth.signInWithPassword({
