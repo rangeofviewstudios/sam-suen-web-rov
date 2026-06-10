@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, DM_Sans } from "next/font/google";
+import { Bebas_Neue, DM_Sans, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -12,6 +19,35 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-dm-sans",
+});
+
+// Norwige — an all-italic display serif (ROV house face). Four weights
+// for typographic hierarchy on the login + studio screens.
+const norwige = localFont({
+  src: [
+    {
+      path: "../public/norwige-font-family-1750004186-0/Norwige-LightItalic-BF68175f322ddb6.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../public/norwige-font-family-1750004186-0/Norwige-MediumItalic-BF68175f325d0c2.otf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/norwige-font-family-1750004186-0/Norwige-SemiBoldItalic-BF68175f326e730.otf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../public/norwige-font-family-1750004186-0/Norwige-ExtraBoldItalicItalic-BF68175f3224386.otf",
+      weight: "800",
+      style: "italic",
+    },
+  ],
+  variable: "--font-norwige",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +72,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bebas.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <body
+        className={`${bebas.variable} ${dmSans.variable} ${norwige.variable} ${roboto.variable}`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

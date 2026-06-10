@@ -1,0 +1,68 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  /* Negative z-index keeps it strictly BEHIND all page content (including
+     non-positioned elements like the board columns and manage panel).
+     pointer-events:none so it never intercepts clicks. */
+  z-index: -1;
+  pointer-events: none;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+.blob1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #90422c 0%, transparent 70%);
+  top: -140px;
+  left: -90px;
+  animation: float-a 24s var(--ease-out-quart) infinite;
+}
+.blob2 {
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, #7b1f1f 0%, transparent 70%);
+  bottom: -160px;
+  right: -110px;
+  animation: float-b 28s var(--ease-out-quart) infinite;
+}
+.blob3 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #603e25 0%, transparent 70%);
+  top: 38%;
+  left: 52%;
+  opacity: 0.4;
+  animation: float-a 32s var(--ease-out-quart) infinite;
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+@keyframes float-a {
+  50% {
+    transform: translate(40px, 32px) scale(1.12);
+  }
+}
+@keyframes float-b {
+  50% {
+    transform: translate(-34px, -40px) scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}

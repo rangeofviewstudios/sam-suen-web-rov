@@ -1,0 +1,46 @@
+import { createServerClient } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
+
+/**
+ * Refreshes the user's session on every request and keeps the auth
+ * cookies in sync between the request and the response. Call this from
+ * the root `middleware.ts`.
+ *
+ * IMPORTANT: do not run code between creating the client and calling
+ * `supabase.auth.getUser()` — it can make it hard to debug random
+ * logouts. Also always return the `supabaseResponse` object as-is.
+ */
+export async function updateSession(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({
+    request,
+  });
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value),
+          );
+          supabaseResponse = NextResponse.next({
+            request,
+          });
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options),
+          );
+        },
+      },
+    },
+  );
+
+  // Do not run code between createServerClient and getUser().
+  // Refreshing the auth token must happen here.
+  await supabase.auth.getUser();
+
+  return supabaseResponse;
+}
