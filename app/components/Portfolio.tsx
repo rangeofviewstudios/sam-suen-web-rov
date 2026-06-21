@@ -6,19 +6,22 @@ import ShinyText from "./ShinyText";
 import "./Portfolio.css";
 
 const photos = [
+  // New media interleaved with stage shots — 15 total, 5 per column
+  "/images/samlake.webp",
   "/images/district2.jpeg",
+  "/images/samtrash1.webp",
   "/images/rappingstage.jpeg",
+  "/images/samlake2.webp",
   "/images/fisheyefootup.jpg",
+  "/images/samdump.webp",
   "/images/fistbumplandscape.jpg",
+  "/images/samtrash3.jpeg",
   "/images/rapred.jpeg",
+  "/images/samlake3.webp",
   "/images/districtfisheye.jpeg",
+  "/images/samlake4.webp",
   "/images/rapping1.jpeg",
   "/images/rapstage2.jpeg",
-  // repeat to fill 3 columns nicely
-  "/images/district2.jpeg",
-  "/images/rappingstage.jpeg",
-  "/images/rapred.jpeg",
-  "/images/rapping1.jpeg",
 ];
 
 export default function Portfolio() {

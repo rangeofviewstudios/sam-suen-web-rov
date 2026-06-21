@@ -19,7 +19,7 @@
 .blob1 {
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, #90422c 0%, transparent 70%);
+  background: radial-gradient(circle, #d4622a 0%, transparent 70%);
   top: -140px;
   left: -90px;
   animation: float-a 24s var(--ease-out-quart) infinite;
@@ -27,7 +27,7 @@
 .blob2 {
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, #7b1f1f 0%, transparent 70%);
+  background: radial-gradient(circle, #3d7a1a 0%, transparent 70%);
   bottom: -160px;
   right: -110px;
   animation: float-b 28s var(--ease-out-quart) infinite;
@@ -35,7 +35,7 @@
 .blob3 {
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, #603e25 0%, transparent 70%);
+  background: radial-gradient(circle, #c9a84c 0%, transparent 70%);
   top: 38%;
   left: 52%;
   opacity: 0.4;

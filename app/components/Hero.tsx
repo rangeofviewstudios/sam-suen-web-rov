@@ -117,12 +117,12 @@ export default function Hero() {
         <div className={styles.imageWrapper}>
           <div className={styles.imageInner}>
             <Image
-              src="/images/rapred.jpeg"
-              alt="Sam Suen performing live on stage under red lights"
+              src="/images/samtrash1.webp"
+              alt="Sam Suen at night holding flowers"
               fill
               priority
               sizes="45vw"
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              style={{ objectFit: "cover", objectPosition: "50% 38%" }}
             />
           </div>
         </div>

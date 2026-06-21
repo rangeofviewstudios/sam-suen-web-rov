@@ -43,7 +43,7 @@ export default function Footer() {
     <footer className="footer">
       {/* Ribbon background — design-system colours, subtle opacity */}
       <Ribbons
-        colors={["#7b1f1f", "rgba(245,240,232,0.18)"]}
+        colors={["#3d7a1a", "#c9a84c"]}
         baseSpring={0.025}
         baseFriction={0.88}
         baseThickness={22}
@@ -62,7 +62,9 @@ export default function Footer() {
           <nav className="footer-nav">
             <a href="#about">About</a>
             <a href="#team">Team</a>
-            <a href="#next-show">Shows</a>
+            <a href="#music">Music</a>
+            <a href="#music-video">Video</a>
+            <a href="#shows-gigs">Photos</a>
             <a href="#portfolio">Portfolio</a>
           </nav>
           <div className="footer-contact">
@@ -117,7 +119,16 @@ export default function Footer() {
         {/* Divider + bottom bar */}
         <div className="footer-divider" />
         <div className="footer-bottom">
-          <p className="footer-copy">&copy; 2026 Sam Suen. All rights reserved.</p>
+          <div className="footer-mark">
+            <Image
+              src="/suenlogo.png"
+              alt="Sam Suen"
+              width={174}
+              height={36}
+              className="footer-wordmark"
+            />
+            <p className="footer-copy">&copy; 2026 Sam Suen. All rights reserved.</p>
+          </div>
           <a href="https://www.rovstudios.com/" target="_blank" rel="noopener noreferrer" className="footer-rov">
             <span className="footer-rov-text">Curated with intention by</span>
             <Image

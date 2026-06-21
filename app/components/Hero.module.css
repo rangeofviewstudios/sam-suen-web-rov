@@ -7,7 +7,7 @@
   min-height: 100dvh;
   display: grid;
   grid-template-columns: 55fr 45fr;
-  background: #0a0a0a;
+  background: var(--color-bg);
   overflow: hidden;
 }
 
@@ -114,7 +114,7 @@
 .rule {
   width: 72px;
   height: 2px;
-  background: #7b1f1f;
+  background: var(--grad-autumn);
   margin: 1.4rem 0 2rem;
   border-radius: 2px;
 }
@@ -145,7 +145,7 @@
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
   background: var(--color-accent);
-  border: 1px solid rgba(123, 31, 31, 0.6);
+  border: 1px solid rgba(212, 98, 42, 0.6);
   border-radius: 100px;
   color: var(--color-text);
   font-family: var(--font-dm-sans, "DM Sans", sans-serif);
@@ -162,8 +162,8 @@
 
 .listenBtn:hover {
   background: var(--color-accent-hover);
-  box-shadow: 0 0 24px rgba(123, 31, 31, 0.3),
-              0 0 48px rgba(123, 31, 31, 0.15);
+  box-shadow: 0 0 24px rgba(212, 98, 42, 0.40),
+              0 0 48px rgba(201, 168, 76, 0.20);
   transform: translateY(-1px);
 }
 
@@ -219,9 +219,9 @@
 }
 
 .btnCircle:hover {
-  border-color: #7b1f1f;
-  color: #f5f0e8;
-  background: rgba(123, 31, 31, 0.08);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  background: var(--color-accent-soft);
 }
 
 /* ============================================
@@ -249,14 +249,14 @@
   z-index: 0;
   pointer-events: none;
   background:
-    /* hot core top-right — where stage light would spill */
-    radial-gradient(ellipse 55% 40% at 75% 20%, rgba(210, 55, 15, 0.55), transparent 65%),
-    /* secondary bloom mid-left — bleeds toward the text */
-    radial-gradient(ellipse 45% 55% at 20% 55%, rgba(170, 35, 10, 0.35), transparent 60%),
-    /* warm floor glow bottom */
-    radial-gradient(ellipse 70% 35% at 50% 100%, rgba(140, 25, 5, 0.3), transparent 65%),
-    /* wide ambient warmth */
-    radial-gradient(ellipse 90% 80% at 55% 45%, rgba(100, 15, 5, 0.18), transparent 75%);
+    /* hot core top-right — gingko gold spill */
+    radial-gradient(ellipse 55% 40% at 75% 20%, rgba(201, 168, 76, 0.55), transparent 65%),
+    /* secondary bloom mid-left — harvest ember toward the text */
+    radial-gradient(ellipse 45% 55% at 20% 55%, rgba(212, 98, 42, 0.38), transparent 60%),
+    /* warm floor glow bottom — deep ember */
+    radial-gradient(ellipse 70% 35% at 50% 100%, rgba(170, 70, 25, 0.3), transparent 65%),
+    /* wide ambient warmth — pine canopy */
+    radial-gradient(ellipse 90% 80% at 55% 45%, rgba(61, 122, 26, 0.22), transparent 75%);
   filter: blur(48px);
 }
 
@@ -268,8 +268,8 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 30% at 80% 15%, rgba(230, 70, 20, 0.3), transparent 60%),
-    radial-gradient(ellipse 30% 50% at 5%  50%, rgba(190, 45, 15, 0.25), transparent 55%);
+    radial-gradient(ellipse 60% 30% at 80% 15%, rgba(212, 98, 42, 0.32), transparent 60%),
+    radial-gradient(ellipse 30% 50% at 5%  50%, rgba(201, 168, 76, 0.26), transparent 55%);
   filter: blur(18px);
 }
 
@@ -279,11 +279,23 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
-  /* Edge shadow — deepens the light-bleed contrast */
-  box-shadow:
-    -40px 0   80px rgba(190, 50, 15, 0.2),
-     0    0  120px rgba(160, 35, 10, 0.15),
-     0   40px 80px rgba(0, 0, 0, 0.6);
+  /* No box-shadow here — a drop shadow isn't clipped by the mask and
+     would paint a hard band below the faded photo. Ambient glow is
+     supplied by the light-leak layers (::before / ::after) behind it. */
+  /* Soft fade-out at the bottom so the photo melts into the dark
+     forest background instead of ending on a hard cut */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 65%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 65%,
+    transparent 100%
+  );
 }
 
 /* ── Scroll indicator ── */
@@ -306,6 +318,13 @@
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.25; transform: scaleY(0.5); }
   50%       { opacity: 0.7;  transform: scaleY(1); }
+}
+
+/* ============================================
+   Tablet landscape — tighten the split
+   ============================================ */
+@media (max-width: 1024px) and (min-width: 901px) {
+  .content { padding: 6rem 0 4rem 40px; }
 }
 
 /* ============================================
@@ -339,9 +358,7 @@
   }
   .imageInner {
     border-radius: 0;
-    box-shadow:
-      0 0 40px rgba(190, 50, 15, 0.15),
-      0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
   }
 
   .content {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, DM_Sans, Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -49,6 +49,12 @@ const norwige = localFont({
   variable: "--font-norwige",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "SAM SUEN — Artist",

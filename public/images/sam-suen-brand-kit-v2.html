@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Suen — Brand Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Bebas Neue';
+      src: url('Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    :root {
+      /* Korean Autumn Forest Palette */
+      --bg:        #111110;   /* ink stone — near-neutral, barely warm */
+      --bg-2:      #171614;   /* lifted neutral */
+      --bg-3:      #1e1c1b;   /* elevated panel */
+      --surface:   #1e1c1b;   /* card bg — warm charcoal */
+      --border:    rgba(240, 235, 220, 0.09);  /* neutral border — no green cast */
+      --text:      #f0ebe0;   /* cool ivory — clean contrast on neutral */
+      --text-2:    rgba(240, 235, 224, 0.62);
+      --text-3:    rgba(240, 235, 224, 0.36);
+      --accent:    #3d7a1a;   /* naejangsan pine — deep forest */
+      --accent-2:  #c9a84c;   /* autumn gingko gold */
+      --accent-3:  #d4622a;   /* harvest ember */
+      --accent-4:  #285210;   /* deep canopy */
+      --accent-muted: rgba(61, 122, 26, 0.15);
+      --grad: linear-gradient(135deg, #285210 0%, #3d7a1a 50%, #c9a84c 100%);
+      --grad-atmo: radial-gradient(ellipse 70% 60% at 38% 42%, rgba(45,100,20,0.28) 0%, transparent 100%);
+      --f-display: 'Bebas Neue', Impact, sans-serif;
+      --f-body:    'Inter', 'Noto Serif KR', sans-serif;
+      --f-mono:    'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--f-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9998;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    /* ——— HERO ——— */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: var(--bg);
+    }
+    .hero-forest {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100%;
+      opacity: 0.55;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-eyebrow {
+      font-family: var(--f-mono);
+      font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow span { opacity: 0.4; }
+    .hero-title {
+      font-family: var(--f-display);
+      font-size: clamp(52px, 9vw, 128px);
+      font-weight: 300; line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .hero-title em {
+      display: inline-block;
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-right: 0.35em;
+    }
+    .hero-subtitle {
+      font-family: var(--f-display);
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: 300; font-style: italic;
+      color: var(--text-2); margin-top: 20px; margin-bottom: 40px;
+    }
+    .hero-nav {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    .hero-nav a {
+      font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: 8px 18px; border-radius: 2px;
+      background: rgba(30,28,27,0.7);
+      transition: all 0.25s ease;
+    }
+    .hero-nav a:hover {
+      color: var(--accent);
+      border-color: rgba(61,122,26,0.4);
+      background: rgba(61,122,26,0.08);
+      transform: translateY(-1px);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 48px; right: 80px;
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.2em;
+      color: var(--text-3); text-transform: uppercase;
+      writing-mode: vertical-rl;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-scroll::before {
+      content: ''; width: 1px; height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--accent));
+    }
+
+    /* ——— SECTION STRUCTURE ——— */
+    .section { padding: 100px 80px; }
+    .section-b { background: var(--bg-2); }
+    .section-c { background: color-mix(in srgb, var(--bg) 94%, var(--accent)); }
+    .section-label {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--accent); opacity: 0.15;
+    }
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-title em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ——— COLOR PALETTE ——— */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 3px;
+      margin-top: 40px;
+    }
+    .palette-swatch {
+      cursor: pointer;
+      border-radius: 2px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .palette-swatch:hover { transform: translateY(-3px); }
+    .swatch-color {
+      height: 120px;
+      display: flex; align-items: flex-end; padding: 12px;
+      position: relative; overflow: hidden;
+    }
+    .swatch-hex {
+      font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.05em;
+      padding: 4px 8px; border-radius: 2px;
+      background: rgba(0,0,0,0.35); backdrop-filter: blur(4px);
+      position: relative; z-index: 1;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .palette-swatch:hover .swatch-hex { opacity: 1; }
+    .swatch-info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+    }
+    .swatch-name {
+      font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em;
+      color: var(--text); text-transform: uppercase; margin-bottom: 4px;
+    }
+    .swatch-role { font-size: 12px; color: var(--text-3); font-weight: 300; }
+
+    /* ——— TYPOGRAPHY ——— */
+    .type-samples { display: grid; gap: 3px; margin-top: 40px; }
+    .type-sample {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 40px 44px;
+      position: relative; overflow: hidden;
+    }
+    .type-label {
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.2em;
+      color: var(--text-3); text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .type-display {
+      font-family: var(--f-display);
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 600; line-height: 1.0; letter-spacing: -0.025em;
+    }
+    .type-display-italic {
+      font-family: var(--f-display);
+      font-size: clamp(28px, 4vw, 56px);
+      font-weight: 300; font-style: italic; line-height: 1.05;
+      color: var(--text-2);
+    }
+    .type-serif-body {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.8; font-weight: 300;
+      color: var(--text-2); max-width: 58ch;
+    }
+    .type-mono-label {
+      font-family: var(--f-mono);
+      font-size: 12px; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .type-scale {
+      display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+    }
+    .type-size-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .type-size-num { font-family: var(--f-mono); font-size: 9px; color: var(--text-3); }
+
+
+    /* ——— GRADIENT SWATCHES ——— */
+    .gradient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 40px; }
+    .gradient-block {
+      height: 160px; border-radius: 2px; position: relative;
+      display: flex; align-items: flex-end; padding: 20px 24px;
+      cursor: pointer; overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .gradient-block:hover { transform: scale(1.01); }
+    .gradient-name {
+      font-family: var(--f-display);
+      font-size: 22px; font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+
+    /* ——— TYPE TESTER ——— */
+    .type-tester { margin-bottom: 48px; }
+    .type-tester-label {
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.22em;
+      color: var(--text-3); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .type-tester-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--border);
+      font-family: var(--f-display);
+      font-size: clamp(24px, 3.5vw, 48px);
+      color: var(--text);
+      padding: 12px 0 16px;
+      outline: none;
+      letter-spacing: -0.01em;
+      transition: border-color 0.2s;
+    }
+    .type-tester-input::placeholder { color: var(--text-3); font-style: italic; }
+    .type-tester-input:focus { border-color: var(--accent); }
+
+    /* ——— COPY BUTTONS ——— */
+    .copy-btn {
+      cursor: pointer;
+      font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.15em;
+      color: var(--text-3); text-transform: uppercase;
+      background: transparent; border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 2px;
+      transition: all 0.2s; margin-top: 10px;
+      display: inline-block;
+    }
+    .copy-btn:hover { color: var(--accent); border-color: rgba(61,122,26,0.4); background: var(--accent-muted); }
+
+
+    /* ——— REVEAL / ANIMATION ——— */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .hero-title { animation: fadeUp 0.7s 0.1s ease both; }
+    .hero-eyebrow { animation: fadeUp 0.6s 0.0s ease both; }
+    .hero-subtitle { animation: fadeUp 0.6s 0.25s ease both; }
+    .hero-nav { animation: fadeUp 0.6s 0.38s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Pulse leaf */
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(61,122,26,0.4)); }
+      50%       { filter: drop-shadow(0 0 20px rgba(61,122,26,0.8)); }
+    }
+    .pulse { animation: pulse-glow 3s ease-in-out infinite; }
+
+    /* Floating mist layers */
+    @keyframes float-l { 0%,100%{transform:translateX(0) translateY(0);} 50%{transform:translateX(12px) translateY(-8px);} }
+    @keyframes float-r { 0%,100%{transform:translateX(0) translateY(0);} 50%{transform:translateX(-10px) translateY(6px);} }
+
+    /* ——— TOAST ——— */
+    #toast {
+      position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(10px);
+      background: var(--surface); border: 1px solid rgba(61,122,26,0.4);
+      font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.1em;
+      color: var(--accent); padding: 12px 24px; border-radius: 2px;
+      z-index: 9999; opacity: 0; transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ——— FOOTER ——— */
+    .footer {
+      padding: 60px 80px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { font-family: var(--f-display); font-size: 20px; font-weight: 600; letter-spacing: 0.08em; }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--text-3); text-transform: uppercase; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero, .section { padding: 60px 24px; }
+      .hero-scroll { display: none; }
+      .gradient-grid { grid-template-columns: 1fr; }
+      .footer { padding: 40px 24px; }
+    }
+    @media (max-width: 560px) {
+      .palette-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <!-- removed -->
+  <svg class="hero-forest" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="display:none">
+
+    <!-- Ground mass -->
+    <ellipse cx="700" cy="960" rx="950" ry="400" fill="rgba(10,8,5,0.95)"/>
+    <ellipse cx="200" cy="920" rx="520" ry="320" fill="rgba(8,6,4,0.90)"/>
+    <ellipse cx="1200" cy="930" rx="580" ry="350" fill="rgba(8,6,4,0.88)"/>
+
+    <!-- Warm ground mist — amber/amber-orange -->
+    <ellipse cx="700" cy="820" rx="900" ry="130" fill="rgba(160,80,25,0.16)" style="animation:float-l 22s ease-in-out infinite"/>
+    <ellipse cx="320" cy="845" rx="480" ry="80" fill="rgba(180,100,30,0.11)" style="animation:float-r 28s ease-in-out infinite"/>
+    <ellipse cx="1050" cy="835" rx="420" ry="65" fill="rgba(140,70,20,0.10)" style="animation:float-l 19s ease-in-out infinite"/>
+
+    <!-- ——— LEFT TREE — bare branches + gold canopy ——— -->
+    <rect x="148" y="540" width="14" height="260" rx="3" fill="rgba(7,5,3,0.92)"/>
+    <!-- left branch -->
+    <line x1="155" y1="590" x2="88" y2="505" stroke="rgba(7,5,3,0.92)" stroke-width="9" stroke-linecap="round"/>
+    <line x1="88"  y1="505" x2="48"  y2="448" stroke="rgba(7,5,3,0.85)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="88"  y1="505" x2="115" y2="440" stroke="rgba(7,5,3,0.80)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="48"  y1="448" x2="28"  y2="408" stroke="rgba(7,5,3,0.70)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="48"  y1="448" x2="72"  y2="400" stroke="rgba(7,5,3,0.65)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- right branch -->
+    <line x1="155" y1="570" x2="222" y2="488" stroke="rgba(7,5,3,0.92)" stroke-width="9" stroke-linecap="round"/>
+    <line x1="222" y1="488" x2="262" y2="432" stroke="rgba(7,5,3,0.85)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="222" y1="488" x2="200" y2="428" stroke="rgba(7,5,3,0.80)" stroke-width="4" stroke-linecap="round"/>
+    <line x1="262" y1="432" x2="288" y2="385" stroke="rgba(7,5,3,0.68)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- ginkgo-gold canopy clusters -->
+    <circle cx="52"  cy="395" r="44" fill="rgba(201,140,40,0.52)"/>
+    <circle cx="98"  cy="368" r="38" fill="rgba(220,162,45,0.48)"/>
+    <circle cx="138" cy="388" r="33" fill="rgba(185,125,38,0.44)"/>
+    <circle cx="75"  cy="415" r="28" fill="rgba(210,90,38,0.32)"/>
+    <circle cx="270" cy="375" r="40" fill="rgba(195,135,40,0.46)"/>
+    <circle cx="300" cy="398" r="30" fill="rgba(212,155,45,0.42)"/>
+    <circle cx="238" cy="392" r="26" fill="rgba(170,105,32,0.38)"/>
+
+    <!-- LEFT secondary smaller tree -->
+    <rect x="295" y="630" width="9" height="170" rx="2" fill="rgba(7,5,3,0.85)"/>
+    <line x1="299" y1="668" x2="258" y2="610" stroke="rgba(7,5,3,0.82)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="299" y1="655" x2="340" y2="600" stroke="rgba(7,5,3,0.82)" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="244" cy="598" r="30" fill="rgba(212,90,42,0.48)"/>
+    <circle cx="272" cy="580" r="25" fill="rgba(190,75,35,0.44)"/>
+    <circle cx="340" cy="588" r="28" fill="rgba(201,100,40,0.42)"/>
+    <circle cx="362" cy="606" r="22" fill="rgba(180,80,32,0.38)"/>
+
+    <!-- ——— RIGHT TREE — ember-orange canopy ——— -->
+    <rect x="1232" y="500" width="16" height="300" rx="3" fill="rgba(7,5,3,0.92)"/>
+    <!-- branches -->
+    <line x1="1240" y1="545" x2="1168" y2="458" stroke="rgba(7,5,3,0.92)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="1168" y1="458" x2="1122" y2="398" stroke="rgba(7,5,3,0.85)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="1168" y1="458" x2="1196" y2="392" stroke="rgba(7,5,3,0.80)" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="1122" y1="398" x2="1095" y2="355" stroke="rgba(7,5,3,0.68)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="1122" y1="398" x2="1148" y2="348" stroke="rgba(7,5,3,0.65)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="1240" y1="525" x2="1315" y2="440" stroke="rgba(7,5,3,0.92)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="1315" y1="440" x2="1360" y2="382" stroke="rgba(7,5,3,0.85)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="1315" y1="440" x2="1288" y2="378" stroke="rgba(7,5,3,0.80)" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="1360" y1="382" x2="1385" y2="338" stroke="rgba(7,5,3,0.65)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- ember-orange canopy -->
+    <circle cx="1098" cy="342" r="42" fill="rgba(212,96,40,0.54)"/>
+    <circle cx="1140" cy="318" r="36" fill="rgba(228,115,48,0.50)"/>
+    <circle cx="1175" cy="340" r="30" fill="rgba(200,80,35,0.46)"/>
+    <circle cx="1112" cy="365" r="24" fill="rgba(201,140,50,0.34)"/>
+    <circle cx="1290" cy="362" r="38" fill="rgba(195,85,38,0.50)"/>
+    <circle cx="1330" cy="345" r="32" fill="rgba(212,100,44,0.46)"/>
+    <circle cx="1362" cy="328" r="28" fill="rgba(180,72,30,0.42)"/>
+    <circle cx="1378" cy="352" r="22" fill="rgba(201,120,45,0.36)"/>
+
+    <!-- RIGHT secondary tree -->
+    <rect x="1082" y="590" width="10" height="210" rx="2" fill="rgba(7,5,3,0.85)"/>
+    <line x1="1087" y1="625" x2="1048" y2="568" stroke="rgba(7,5,3,0.80)" stroke-width="7" stroke-linecap="round"/>
+    <line x1="1087" y1="612" x2="1128" y2="560" stroke="rgba(7,5,3,0.80)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="1032" cy="555" r="34" fill="rgba(201,168,76,0.50)"/>
+    <circle cx="1062" cy="536" r="28" fill="rgba(220,182,82,0.46)"/>
+    <circle cx="1100" cy="542" r="26" fill="rgba(185,150,62,0.44)"/>
+    <circle cx="1128" cy="558" r="24" fill="rgba(170,138,58,0.40)"/>
+
+    <!-- ——— DISTANT CENTER TREES ——— -->
+    <rect x="688" y="660" width="8" height="140" rx="2" fill="rgba(5,4,2,0.70)"/>
+    <circle cx="672" cy="648" r="24" fill="rgba(160,90,30,0.36)"/>
+    <circle cx="693" cy="635" r="19" fill="rgba(180,110,40,0.32)"/>
+    <circle cx="712" cy="646" r="21" fill="rgba(148,78,25,0.30)"/>
+    <rect x="802" y="678" width="7" height="122" rx="2" fill="rgba(5,4,2,0.65)"/>
+    <circle cx="786" cy="664" r="21" fill="rgba(195,118,48,0.32)"/>
+    <circle cx="806" cy="653" r="17" fill="rgba(175,98,38,0.28)"/>
+    <circle cx="822" cy="662" r="19" fill="rgba(158,82,32,0.26)"/>
+
+    <!-- ——— FALLING LEAVES ——— -->
+    <!-- ginkgo gold, drifting upper-center -->
+    <g style="opacity:0.78; animation:float-r 7s ease-in-out infinite">
+      <ellipse cx="820" cy="155" rx="15" ry="6" fill="#c9a84c" transform="rotate(-32 820 155)"/>
+      <line x1="820" y1="155" x2="827" y2="170" stroke="#a08030" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- ember red, upper left -->
+    <g style="opacity:0.68; animation:float-l 9.5s ease-in-out infinite">
+      <ellipse cx="375" cy="215" rx="13" ry="5.5" fill="#d4622a" transform="rotate(42 375 215)"/>
+      <line x1="375" y1="215" x2="368" y2="230" stroke="#a04020" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- deep crimson, right mid -->
+    <g style="opacity:0.62; animation:float-r 11s ease-in-out infinite">
+      <ellipse cx="1055" cy="285" rx="11" ry="4.5" fill="#b83a28" transform="rotate(-22 1055 285)"/>
+      <line x1="1055" y1="285" x2="1061" y2="298" stroke="#901820" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- amber, center -->
+    <g style="opacity:0.72; animation:float-l 8.2s ease-in-out infinite">
+      <ellipse cx="678" cy="345" rx="14" ry="5.5" fill="#e0a030" transform="rotate(52 678 345)"/>
+      <line x1="678" y1="345" x2="671" y2="359" stroke="#b07820" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- green-gold, transitioning, center-left -->
+    <g style="opacity:0.55; animation:float-r 13.5s ease-in-out infinite">
+      <ellipse cx="538" cy="405" rx="12" ry="4.5" fill="#9ab840" transform="rotate(-48 538 405)"/>
+      <line x1="538" y1="405" x2="543" y2="418" stroke="#78902e" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- bright gold, right upper -->
+    <g style="opacity:0.70; animation:float-l 6.5s ease-in-out infinite">
+      <ellipse cx="1152" cy="188" rx="13" ry="5" fill="#d4b040" transform="rotate(-58 1152 188)"/>
+      <line x1="1152" y1="188" x2="1146" y2="201" stroke="#a08828" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- crimson, left side -->
+    <g style="opacity:0.56; animation:float-r 10.5s ease-in-out infinite">
+      <ellipse cx="238" cy="295" rx="11" ry="4" fill="#c0302a" transform="rotate(28 238 295)"/>
+      <line x1="238" y1="295" x2="244" y2="308" stroke="#981820" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- copper, center high -->
+    <g style="opacity:0.62; animation:float-l 12s ease-in-out infinite">
+      <ellipse cx="952" cy="138" rx="12" ry="4.5" fill="#b87030" transform="rotate(18 952 138)"/>
+      <line x1="952" y1="138" x2="946" y2="151" stroke="#906025" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- tiny gold, far right -->
+    <g style="opacity:0.46; animation:float-r 15.5s ease-in-out infinite">
+      <ellipse cx="1282" cy="335" rx="9" ry="3.5" fill="#c9a84c" transform="rotate(-38 1282 335)"/>
+    </g>
+    <!-- orange, left mid -->
+    <g style="opacity:0.52; animation:float-l 8.8s ease-in-out infinite">
+      <ellipse cx="448" cy="475" rx="11" ry="4" fill="#d4622a" transform="rotate(68 448 475)"/>
+      <line x1="448" y1="475" x2="440" y2="486" stroke="#a04018" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <!-- small ember, upper center-left -->
+    <g style="opacity:0.58; animation:float-r 9s ease-in-out infinite">
+      <ellipse cx="580" cy="240" rx="10" ry="4" fill="#e07828" transform="rotate(-15 580 240)"/>
+    </g>
+    <!-- deep gold, lower center -->
+    <g style="opacity:0.44; animation:float-l 17s ease-in-out infinite">
+      <ellipse cx="740" cy="520" rx="13" ry="5" fill="#c9a84c" transform="rotate(35 740 520)"/>
+      <line x1="740" y1="520" x2="734" y2="533" stroke="#a08030" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Warm dusk horizon glow -->
+    <ellipse cx="700" cy="700" rx="650" ry="120" fill="rgba(175,85,20,0.18)"/>
+    <ellipse cx="700" cy="745" rx="800" ry="90"  fill="rgba(145,65,15,0.12)"/>
+
+    <!-- Soft late-afternoon backlight -->
+    <ellipse cx="860" cy="370" rx="220" ry="170" fill="rgba(201,155,70,0.05)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      Sam Suen <span>·</span> Official Brand Identity <span>·</span> 2025
+    </div>
+    <h1 class="hero-title">
+      Sam<br><em>Suen</em>
+    </h1>
+    <p class="hero-subtitle">Music Artist · Singer-Songwriter · Korean Indie Soul</p>
+    <nav class="hero-nav">
+      <a href="#palette">Color System</a>
+      <a href="#typography">Typography</a>
+    </nav>
+  </div>
+
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- ——— COLOR PALETTE ——— -->
+<section class="section section-b" id="palette">
+  <div class="section-label reveal">01 — Color System</div>
+  <h2 class="section-title reveal">Deep Forest <em>Greens</em></h2>
+  <p class="reveal" style="font-size:14px;color:var(--text-2);font-weight:300;line-height:1.7;max-width:56ch;margin-top:8px;">
+    Drawn from Korea's autumn forests — Naejangsan's pine canopy, Seoraksan's mist, the gingko gold of Seoul's Bukchon district at dusk.
+  </p>
+
+  <div class="palette-grid">
+    <!-- Primary -->
+    <div class="palette-swatch reveal" onclick="copyText('#111110', 'Ink Stone copied!')">
+      <div class="swatch-color" style="background:#111110; height:160px;">
+        <span class="swatch-hex" style="color:#f0ebe0;">#111110</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ink Stone</div>
+        <div class="swatch-role">Primary Background — Neutral</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <div class="palette-swatch reveal" onclick="copyText('#1e1c1b', 'Warm Charcoal copied!')">
+      <div class="swatch-color" style="background:#1e1c1b; height:160px;">
+        <span class="swatch-hex" style="color:#f0ebe0;">#1E1C1B</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Warm Charcoal</div>
+        <div class="swatch-role">Surface / Cards — Neutral</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <div class="palette-swatch reveal" onclick="copyText('#7ab547', 'Pine Light copied!')">
+      <div class="swatch-color" style="background:#7ab547; height:160px;">
+        <span class="swatch-hex">#7AB547</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Pine Light</div>
+        <div class="swatch-role">Primary Accent</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <div class="palette-swatch reveal" onclick="copyText('#4e7c3a', 'Old Pine copied!')">
+      <div class="swatch-color" style="background:#4e7c3a; height:160px;">
+        <span class="swatch-hex">#4E7C3A</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Old Pine</div>
+        <div class="swatch-role">Secondary Green</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <!-- Autumn accent -->
+    <div class="palette-swatch reveal" onclick="copyText('#c9a84c', 'Gingko Gold copied!')">
+      <div class="swatch-color" style="background:#c9a84c; height:160px;">
+        <span class="swatch-hex">#C9A84C</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Gingko Gold</div>
+        <div class="swatch-role">Warm Accent</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <div class="palette-swatch reveal" onclick="copyText('#d4622a', 'Harvest Ember copied!')">
+      <div class="swatch-color" style="background:#d4622a; height:160px;">
+        <span class="swatch-hex">#D4622A</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Harvest Ember</div>
+        <div class="swatch-role">Tertiary / CTA Alert</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <!-- Neutrals -->
+    <div class="palette-swatch reveal" onclick="copyText('#f0ebe0', 'Ivory copied!')">
+      <div class="swatch-color" style="background:#f0ebe0; height:160px;">
+        <span class="swatch-hex" style="color:#1e1c1b;">#F0EBE0</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cool Ivory</div>
+        <div class="swatch-role">Primary Text</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+    <div class="palette-swatch reveal" onclick="copyText('#2e4523', 'Moss Shadow copied!')">
+      <div class="swatch-color" style="background:#2e4523; height:160px;">
+        <span class="swatch-hex">#2E4523</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Moss Shadow</div>
+        <div class="swatch-role">Border / Divide</div>
+        <button class="copy-btn">Copy HEX</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gradients -->
+  <div style="margin-top:56px;">
+    <div class="section-label reveal">Gradient System</div>
+    <p class="reveal" style="font-size:13px;color:var(--text-3);font-weight:300;line-height:1.7;max-width:52ch;margin-bottom:32px;font-family:var(--f-mono);letter-spacing:0.04em;">Two gradients. One for type. One for atmosphere. Never both at once.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+
+      <!-- Gradient 01: Dusk Pine — for text, logos, display headings -->
+      <div class="reveal" style="display:flex;flex-direction:column;gap:3px;">
+        <div class="gradient-block" style="background:linear-gradient(135deg, #4e7c3a 0%, #7ab547 55%, #c9a84c 100%); height:200px; cursor:pointer;" onclick="copyText('linear-gradient(135deg, #4e7c3a 0%, #7ab547 55%, #c9a84c 100%)', 'Dusk Pine copied!')">
+          <!-- Text preview rendered on the gradient -->
+          <div style="width:100%;padding:20px 24px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;font-weight:600;letter-spacing:0.06em;line-height:1;background:linear-gradient(135deg,#4e7c3a,#7ab547 55%,#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:brightness(1.8);">Sam Suen</div>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:20px 24px;">
+          <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:0.12em;color:var(--text);text-transform:uppercase;margin-bottom:6px;">Dusk Pine</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--text-3);margin-bottom:4px;">Use on: display text, logo, headings</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--text-3);margin-bottom:14px;">Never on: body copy, UI elements, backgrounds</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--accent);letter-spacing:0.04em;margin-bottom:12px;">135° · Old Pine → Pine Light → Gingko</div>
+          <button class="copy-btn" onclick="copyText('linear-gradient(135deg, #4e7c3a 0%, #7ab547 55%, #c9a84c 100%)', 'Dusk Pine copied!')">Copy CSS</button>
+        </div>
+      </div>
+
+      <!-- Gradient 02: Night Fog — for backgrounds, hero glow, canvas -->
+      <div class="reveal" style="display:flex;flex-direction:column;gap:3px;">
+        <div class="gradient-block" style="background:radial-gradient(ellipse 70% 60% at 38% 42%, rgba(78,124,58,0.28) 0%, rgba(17,17,16,0) 100%), #111110; height:200px; cursor:pointer; position:relative; overflow:hidden;" onclick="copyText('radial-gradient(ellipse 70% 60% at 38% 42%, rgba(78,124,58,0.28) 0%, transparent 100%)', 'Night Fog copied!')">
+          <!-- Subtle pine silhouette to show atmosphere -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.35;" viewBox="0 0 400 200" fill="none" preserveAspectRatio="xMidYMid slice">
+            <polygon points="260,200 290,110 320,200" fill="#4e7c3a"/>
+            <polygon points="285,200 308,90 331,200" fill="#3d6230"/>
+            <polygon points="240,200 264,130 288,200" fill="#4e7c3a"/>
+          </svg>
+          <div style="position:absolute;bottom:20px;left:24px;font-family:'Bebas Neue',sans-serif;font-size:13px;font-style:italic;letter-spacing:0.08em;color:rgba(240,235,224,0.45);">for atmosphere only</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:20px 24px;">
+          <div style="font-family:var(--f-mono);font-size:11px;letter-spacing:0.12em;color:var(--text);text-transform:uppercase;margin-bottom:6px;">Night Fog</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--text-3);margin-bottom:4px;">Use on: hero sections, album art, canvas overlays</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--text-3);margin-bottom:14px;">Never on: cards, UI surfaces, text</div>
+          <div style="font-family:var(--f-mono);font-size:10px;color:var(--accent);letter-spacing:0.04em;margin-bottom:12px;">Radial · Green glow over neutral dark</div>
+          <button class="copy-btn" onclick="copyText('radial-gradient(ellipse 70% 60% at 38% 42%, rgba(78,124,58,0.28) 0%, transparent 100%)', 'Night Fog copied!')">Copy CSS</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ——— TYPOGRAPHY ——— -->
+<section class="section" id="typography">
+  <div class="section-label reveal">02 — Typography</div>
+  <h2 class="section-title reveal">Ink &amp; <em>Voice</em></h2>
+
+  <div class="type-tester reveal">
+    <div class="type-tester-label">Live preview — type to test</div>
+    <input type="text" class="type-tester-input" id="typeTester" placeholder="Type something…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <div class="type-samples">
+
+    <div class="type-sample reveal">
+      <div class="type-label">Display — Bebas Neue</div>
+      <div class="type-display" style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        Sam Suen
+      </div>
+      <button class="copy-btn" onclick="copyText('Bebas Neue', 'Font copied!')">Copy Font</button>
+    </div>
+
+    <div class="type-sample reveal">
+      <div class="type-label">Display — Bebas Neue Light</div>
+      <div class="type-display-italic">가을의 노래 · Songs of Autumn</div>
+      <button class="copy-btn" onclick="copyText('Bebas Neue', 'Font copied!')">Copy Font</button>
+    </div>
+
+    <div class="type-sample reveal">
+      <div class="type-label">Body — Inter 300</div>
+      <p class="type-serif-body">
+        Music rooted in the quiet hours — the kind that asks you to slow down, breathe the pine air, and feel what the trees remember. Sam Suen writes songs the way autumn falls: gradually, then all at once.
+      </p>
+      <button class="copy-btn" onclick="copyText('Inter, 300 weight', 'Font copied!')">Copy Font</button>
+    </div>
+
+    <div class="type-sample reveal">
+      <div class="type-label">Label / Mono — DM Mono 400</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="type-mono-label">Sam Suen · Official Brand 2025 · 쌤 선</div>
+        <div style="font-family:var(--f-mono);font-size:14px;color:var(--text-3);">Track 01 · 3:47 · Naejangsan EP</div>
+        <div style="font-family:var(--f-mono);font-size:12px;color:var(--accent);letter-spacing:0.2em;">RELEASING 11.15.2025</div>
+      </div>
+      <button class="copy-btn" onclick="copyText('DM Mono, 400 weight', 'Font copied!')">Copy Font</button>
+    </div>
+
+    <!-- Type scale -->
+    <div class="type-sample reveal">
+      <div class="type-label">Type Scale</div>
+      <div class="type-scale">
+        <div class="type-size-item">
+          <span style="font-family:var(--f-display);font-size:72px;font-weight:600;line-height:1;">S</span>
+          <span class="type-size-num">72px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-display);font-size:48px;font-weight:600;line-height:1;">S</span>
+          <span class="type-size-num">48px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-display);font-size:32px;font-weight:600;line-height:1;">S</span>
+          <span class="type-size-num">32px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-body);font-size:20px;font-weight:300;line-height:1;">S</span>
+          <span class="type-size-num">20px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-body);font-size:16px;font-weight:300;line-height:1;">S</span>
+          <span class="type-size-num">16px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-body);font-size:14px;font-weight:300;line-height:1;">S</span>
+          <span class="type-size-num">14px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-mono);font-size:12px;font-weight:400;line-height:1;">S</span>
+          <span class="type-size-num">12px</span>
+        </div>
+        <div class="type-size-item">
+          <span style="font-family:var(--f-mono);font-size:10px;font-weight:400;line-height:1;">S</span>
+          <span class="type-size-num">10px</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Sam <span>Suen</span> <span style="color:var(--text-3);">·</span> <span style="font-family:var(--f-display);font-style:italic;font-weight:300;color:var(--text-3);">선</span></div>
+    <div style="font-family:var(--f-mono);font-size:10px;color:var(--text-3);margin-top:6px;letter-spacing:0.12em;">Brand Identity System · 2025</div>
+  </div>
+  <div style="text-align:right;">
+    <div class="footer-copy">Designed for the autumn forests of Korea</div>
+    <div class="footer-copy" style="margin-top:4px;font-style:italic;font-family:var(--f-display);font-size:12px;color:rgba(61,122,26,0.5);">나무는 기억한다 · The trees remember</div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  // ——— SCROLL REVEAL ———
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ——— CLIPBOARD + TOAST ———
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(window.__tt);
+    window.__tt = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+  function copyText(text, label) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => showToast(label || 'Copied ✓'));
+    } else {
+      const ta = document.createElement('textarea'); ta.value = text;
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      showToast(label || 'Copied ✓');
+    }
+  }
+
+  // ——— SMOOTH NAV ———
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ——— PREFERS REDUCED MOTION ———
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq.matches) {
+    document.querySelectorAll('[style*="animation"]').forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
+
+  // ——— TYPOGRAPHY TESTER ———
+  const typeTester = document.getElementById('typeTester');
+  if (typeTester) {
+    const defaults = {
+      display: 'Sam Suen',
+      italic: '가을의 노래 · Songs of Autumn',
+      body: 'Music rooted in the quiet hours — the kind that asks you to slow down, breathe the pine air, and feel what the trees remember. Sam Suen writes songs the way autumn falls: gradually, then all at once.',
+      mono: 'Sam Suen · Official Brand 2025 · 쌤 선'
+    };
+    typeTester.addEventListener('input', function() {
+      const val = this.value;
+      const elDisplay  = document.querySelector('.type-display');
+      const elItalic   = document.querySelector('.type-display-italic');
+      const elBody     = document.querySelector('.type-serif-body');
+      const elMono     = document.querySelector('.type-mono-label');
+      if (val) {
+        if (elDisplay) elDisplay.textContent = val;
+        if (elItalic)  elItalic.textContent  = val;
+        if (elBody)    elBody.textContent     = val;
+        if (elMono)    elMono.textContent     = val;
+      } else {
+        if (elDisplay) elDisplay.textContent = defaults.display;
+        if (elItalic)  elItalic.textContent  = defaults.italic;
+        if (elBody)    elBody.textContent     = defaults.body;
+        if (elMono)    elMono.textContent     = defaults.mono;
+      }
+    });
+  }
+
+  // ——— SWATCH COPY BUTTONS ———
+  document.querySelectorAll('.palette-swatch').forEach(swatch => {
+    const btn   = swatch.querySelector('.copy-btn');
+    const hexEl = swatch.querySelector('.swatch-hex');
+    if (btn && hexEl) {
+      const hex = hexEl.textContent.trim();
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        copyText(hex, hex + ' copied!');
+      });
+    }
+  });
+</script>
+</body>
+</html>

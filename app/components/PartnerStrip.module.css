@@ -1,0 +1,40 @@
+/* ============================================
+   Partner Strip — subtle pre-footer lockup
+   ============================================ */
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  padding: 3.5rem var(--container-padding) 1rem;
+}
+
+.strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+.strip:hover { opacity: 1; }
+
+.label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.logo {
+  height: 96px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .wrap { padding: 2.5rem 1.25rem 0.5rem; }
+  .strip { flex-direction: column; gap: 0.75rem; }
+  .label { font-size: 10px; letter-spacing: 0.2em; }
+  .logo { height: 72px; }
+}

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Space_Mono } from "next/font/google";
-import Image from "next/image";
 import TeamPhoto from "./TeamPhoto";
 import ShinyText from "./ShinyText";
 import styles from "./Team.module.css";
@@ -46,6 +45,18 @@ const members: TeamMember[] = [
     role: "Mixing / Mastering / Recording",
     imageSrc: "/images/basuteampic.webp",
     link: "https://www.ayushbasu.com/",
+  },
+  {
+    name: "Chandra",
+    funFact: "Sees the whole board",
+    role: "Director / Strategist",
+    imageSrc: "/images/chandra.jpg",
+  },
+  {
+    name: "Krina",
+    funFact: "Catches the moment",
+    role: "Photographer",
+    imageSrc: "/images/krinapic.jpg",
   },
 ];
 
@@ -103,18 +114,9 @@ export default function Team() {
                   <p className={styles.cardName}>{m.name}</p>
                   <p className={styles.cardMeta}>
                     <ShinyText
-                      text={m.funFact}
-                      color="rgba(160,160,160,0.9)"
-                      shineColor="rgba(245,240,232,0.95)"
-                      speed={3.5}
-                      spread={100}
-                      delay={i * 0.4}
-                      className={styles.cardFact}
-                    />
-                    <ShinyText
                       text={`[${m.role}]`}
-                      color="rgba(123,31,31,0.85)"
-                      shineColor="rgba(200,60,60,0.95)"
+                      color="rgba(201,168,76,0.9)"
+                      shineColor="rgba(224,122,42,0.98)"
                       speed={3.5}
                       spread={90}
                       delay={i * 0.4 + 0.2}
@@ -126,27 +128,6 @@ export default function Team() {
             );
           })}
         </div>
-
-        {/* Creative partners banner */}
-        <a
-          href="https://www.rovstudios.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.partnerBanner}
-          style={{ textDecoration: "none" }}
-        >
-          <p className={styles.partnerText}>Creative partners with</p>
-          <div className={styles.partnerLogoWrap} style={{ position: "relative" }}>
-            <Image
-              src="/images/rovbrownlogo.png"
-              alt="Range of View"
-              width={200}
-              height={200}
-              style={{ objectFit: "contain" }}
-            />
-            <span className={styles.partnerShine} />
-          </div>
-        </a>
       </div>
     </section>
   );

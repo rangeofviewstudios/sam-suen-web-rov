@@ -4,8 +4,8 @@
 
 .section {
   position: relative;
-  background: #0a0a0a;
-  padding: 80px 60px 120px;
+  background: var(--color-bg);
+  padding: 80px 60px 24px;
   overflow-x: clip;
   overflow-y: visible;
 }
@@ -93,12 +93,12 @@
 }
 .navBtnActive {
   color: #fff;
-  background: rgba(123, 31, 31, 0.15);
-  border: 1px solid rgba(123, 31, 31, 0.3);
-  box-shadow: 0 0 12px rgba(123, 31, 31, 0.15);
+  background: rgba(201, 168, 76, 0.16);
+  border: 1px solid rgba(201, 168, 76, 0.34);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.18);
 }
 .navBtnActive:hover {
-  background: rgba(123, 31, 31, 0.2);
+  background: rgba(201, 168, 76, 0.22);
 }
 
 .navIndex {
@@ -108,7 +108,7 @@
   transition: color 0.2s;
 }
 .navBtnActive .navIndex {
-  color: rgba(123, 31, 31, 0.7);
+  color: rgba(201, 168, 76, 0.85);
 }
 
 /* ── Staggered row ── */
@@ -117,7 +117,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 28px;
-  padding-bottom: 160px; /* room for the stagger offset */
+  padding-bottom: 16px; /* room for the stagger offset */
 }
 
 /* ── Card slot ── */
@@ -184,7 +184,7 @@
 .cardRole {
   font-family: var(--font-space-mono, "Space Mono", monospace);
   font-size: 11px;
-  color: #3d9e75;
+  color: #c9a84c;
   letter-spacing: 0.05em;
 }
 
@@ -194,8 +194,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 20px 0 40px;
+  gap: 6px;
+  padding: 0;
 }
 
 .partnerText {
@@ -256,30 +256,30 @@
    Mobile
    ============================================ */
 
+/* Tablet — switch the staggered row to a tidy grid */
 @media (max-width: 900px) {
-  .section { padding: 60px 24px 80px; overflow-x: auto; }
-  .row { gap: 20px; }
+  .section { padding: 60px 24px 56px; }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 18px;
+    padding-bottom: 0;
+  }
+  .cardSlot {
+    margin-top: 0 !important;
+    max-width: none;
+  }
 }
 
+/* Phone — two columns, drop the redundant member-nav pills */
 @media (max-width: 600px) {
-  .header { flex-direction: column; align-items: flex-start; }
-
-  .nav { width: 100%; justify-content: space-between; }
-
-  .navBtn { flex: 1; justify-content: center; gap: 4px; padding: 6px 10px; font-size: 10px; }
-
+  .section { padding: 56px 18px 48px; }
+  .header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .nav { display: none; }
   .row {
-    flex-direction: column;
-    align-items: center;
-    overflow-x: visible;
-    padding-bottom: 0;
-    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 14px;
   }
-  .cardSlot { margin-top: 0 !important; max-width: 260px; width: 100%; }
-
   .cardName { font-size: 14px; }
-  .cardFact, .cardRole { font-size: 10px; }
-
-  .partnerBanner { padding: 10px 0 20px; }
-  .partnerText { font-size: 13px; letter-spacing: 0.15em; }
+  .cardRole { font-size: 10px; }
 }

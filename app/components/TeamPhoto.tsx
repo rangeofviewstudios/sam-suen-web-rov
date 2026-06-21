@@ -10,7 +10,7 @@ interface TeamPhotoProps {
 
 export default function TeamPhoto({ imageSrc, name, width = 300, height = 400 }: TeamPhotoProps) {
   return (
-    <div className={styles.shell} style={{ width, height }}>
+    <div className={styles.shell} style={{ width: "100%", aspectRatio: `${width} / ${height}` }}>
       <span className={`${styles.corner} ${styles.tl}`} />
       <span className={`${styles.corner} ${styles.tr}`} />
       <span className={`${styles.corner} ${styles.bl}`} />

@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { User, Users, CalendarDays, Images, Home } from "lucide-react";
+import { User, Users, Home, Disc3, Camera } from "lucide-react";
 import "./Navbar.css";
 
 const NAV_ITEMS = [
-  { name: "Home",    url: "#hero",      icon: Home },
-  { name: "About",   url: "#about",     icon: User },
-  { name: "Team",    url: "#team",      icon: Users },
-  { name: "Shows",   url: "#next-show", icon: CalendarDays },
-  { name: "Contact", url: "#portfolio", icon: Images },
+  { name: "Home",   url: "#hero",       icon: Home },
+  { name: "About",  url: "#about",      icon: User },
+  { name: "Team",   url: "#team",       icon: Users },
+  { name: "Music",  url: "#music",      icon: Disc3 },
+  { name: "Photos", url: "#shows-gigs", icon: Camera },
 ];
 
 export default function Navbar() {
@@ -27,7 +28,7 @@ export default function Navbar() {
   useEffect(() => {
     const map: Record<string, string> = {
       hero: "Home", about: "About", team: "Team",
-      "next-show": "Shows", portfolio: "Contact",
+      music: "Music", "shows-gigs": "Photos",
     };
     const observers: IntersectionObserver[] = [];
     Object.keys(map).forEach((id) => {
@@ -58,6 +59,19 @@ export default function Navbar() {
         animate={mounted ? { y: 0, opacity: 1 } : {}}
         transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
       >
+        {/* Wordmark */}
+        <a href="#hero" className="nav-logo" aria-label="Sam Suen — home">
+          <Image
+            src="/suenlogo.png"
+            alt="Sam Suen"
+            width={174}
+            height={36}
+            className="nav-logo-img"
+            priority
+          />
+        </a>
+        <span className="nav-divider" />
+
         {/* Links */}
         <div className="nav-links" onMouseLeave={() => setHovered(null)}>
           {NAV_ITEMS.map(({ name, url, icon: Icon }) => (
@@ -113,6 +127,17 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <div className="mobile-menu-bg" />
+            <motion.a
+              href="#hero"
+              className="mobile-menu-logo"
+              aria-label="Sam Suen — home"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Image src="/suenlogo.png" alt="Sam Suen" width={174} height={36} className="mobile-menu-logo-img" />
+            </motion.a>
             <nav className="mobile-menu-inner">
               {NAV_ITEMS.map(({ name, url }, i) => (
                 <motion.a

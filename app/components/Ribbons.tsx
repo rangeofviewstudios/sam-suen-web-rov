@@ -47,7 +47,7 @@ function parseColor(hex: string): [number, number, number, number] {
 }
 
 export default function Ribbons({
-  colors = ["#7b1f1f", "#f5f0e8"],
+  colors = ["#3d7a1a", "#c9a84c"],
   baseSpring = 0.03,
   baseFriction = 0.9,
   baseThickness = 30,

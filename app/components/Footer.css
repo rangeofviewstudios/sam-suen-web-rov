@@ -157,6 +157,20 @@
   letter-spacing: 0.06em;
 }
 
+/* ── Wordmark lockup ── */
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-wordmark {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
 /* ── ROV branding lockup ── */
 .footer-rov {
   display: flex;

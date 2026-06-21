@@ -5,22 +5,37 @@
    ============================================ */
 
 :root {
-  /* ── Colours ── */
-  --color-bg:           #0a0a0a;
-  --color-bg-elevated:  #111111;
-  --color-bg-card:      #141414;
-  --color-surface:      #1a1a1a;
-  --color-border:       rgba(255, 255, 255, 0.06);
-  --color-border-hover: rgba(255, 255, 255, 0.12);
+  /* ── Colours — Korean Autumn Forest ── */
+  /* Deep forest-green base — really dark pine night */
+  --color-bg:           #08110b;
+  --color-bg-elevated:  #0b1810;
+  --color-bg-card:      #0e1d13;
+  --color-surface:      #122618;
+  --color-border:       rgba(240, 235, 220, 0.08);
+  --color-border-hover: rgba(240, 235, 220, 0.16);
 
-  --color-text:         #f5f0e8;
-  --color-text-muted:   #a0a0a0;
-  --color-text-subtle:  #555555;
+  --color-text:         #f0ebe0;   /* cool ivory */
+  --color-text-muted:   rgba(240, 235, 224, 0.60);
+  --color-text-subtle:  rgba(240, 235, 224, 0.30);
 
-  --color-accent:       #7b1f1f;
-  --color-accent-hover: #9b2525;
-  --color-accent-soft:  rgba(123, 31, 31, 0.12);
-  --color-accent-glow:  rgba(123, 31, 31, 0.35);
+  /* Primary accent — harvest ember (warm, high-contrast on forest green) */
+  --color-accent:       #d4622a;
+  --color-accent-hover: #e2762f;
+  --color-accent-soft:  rgba(212, 98, 42, 0.12);
+  --color-accent-glow:  rgba(212, 98, 42, 0.40);
+
+  /* Autumn accents — gingko gold (secondary highlight) + naejangsan pine (the world) */
+  --color-gold:         #c9a84c;
+  --color-gold-soft:    rgba(201, 168, 76, 0.14);
+  --color-gold-glow:    rgba(201, 168, 76, 0.42);
+  --color-ember:        #d4622a;
+  --color-ember-soft:   rgba(212, 98, 42, 0.12);
+  --color-ember-glow:   rgba(212, 98, 42, 0.40);
+  --color-pine:         #3d7a1a;
+  --color-pine-soft:    rgba(61, 122, 26, 0.12);
+
+  /* Gradients */
+  --grad-autumn:        linear-gradient(135deg, #285210 0%, #3d7a1a 50%, #c9a84c 100%);
 
   /* ── Typography ── */
   --font-display: var(--font-bebas),  "Bebas Neue", sans-serif;
@@ -43,6 +58,17 @@
   /* ── Layout ── */
   --container-max:     1320px;
   --container-padding: 2rem;
+}
+
+/* Tighter gutters on smaller screens */
+@media (max-width: 1024px) {
+  :root { --container-padding: 1.75rem; }
+}
+@media (max-width: 768px) {
+  :root { --container-padding: 1.25rem; }
+}
+@media (max-width: 400px) {
+  :root { --container-padding: 1rem; }
 }
 
 /* ── Reset ── */
@@ -142,6 +168,9 @@ a   { color: inherit; text-decoration: none; }
   color: var(--color-text);
   margin-bottom: 1.5rem;
 }
+@media (max-width: 480px) {
+  .section-title { font-size: clamp(3rem, 15vw, 4.5rem); }
+}
 
 /* Italic secondary line — outlined, editorial */
 .section-title em {
@@ -163,7 +192,7 @@ a   { color: inherit; text-decoration: none; }
 
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-text-subtle); }
+::-webkit-scrollbar-thumb { background: #2a3a28; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
-::selection { background: var(--color-accent); color: #fff; }
+::selection { background: var(--color-accent); color: var(--color-text); }

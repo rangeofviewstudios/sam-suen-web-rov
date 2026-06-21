@@ -28,14 +28,14 @@ export default function About() {
         <div className="about-image-col">
           <div ref={r1.ref} className={`about-image-shell reveal-up ${r1.isVisible ? "visible" : ""}`}>
             <div className="about-image-inner">
-              <Image src="/images/rapping1.jpeg" alt="Sam Suen performing with microphone"
+              <Image src="/images/samlake.webp" alt="Sam Suen by the lake framed by pines"
                 width={480} height={640} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
             </div>
           </div>
           <div ref={r2.ref} className={`about-image-accent reveal-up delay-3 ${r2.isVisible ? "visible" : ""}`}>
             <div className="about-image-shell small">
               <div className="about-image-inner">
-                <Image src="/images/rapstage2.jpeg" alt="Sam Suen on stage with purple lighting"
+                <Image src="/images/samlake2.webp" alt="Sam Suen by the lake"
                   width={260} height={340} style={{ objectFit: "cover", width: "100%", height: "100%" }} />
               </div>
             </div>

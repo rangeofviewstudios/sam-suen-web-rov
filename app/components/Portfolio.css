@@ -3,7 +3,7 @@
    ============================================ */
 
 .portfolio {
-  padding: 8rem var(--container-padding) 2rem;
+  padding: 4rem var(--container-padding) 2rem;
   position: relative;
 }
 
@@ -87,8 +87,8 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 10, 10, 0.75) 0%,
-    rgba(10, 10, 10, 0) 50%
+    rgba(8, 17, 11, 0.8) 0%,
+    rgba(8, 17, 11, 0) 50%
   );
   display: flex;
   align-items: flex-end;
