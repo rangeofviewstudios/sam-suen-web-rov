@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useReveal } from "../hooks/useReveal";
 import "./ShowsGigs.css";
 
@@ -46,15 +46,6 @@ const shows: Show[] = [
   },
 ];
 
-function LeafNode() {
-  return (
-    <svg className="sg-node-leaf" viewBox="0 0 40 52" fill="none" aria-hidden>
-      <ellipse cx="20" cy="18" rx="13" ry="8" transform="rotate(-14 20 18)" fill="url(#sgLeafGrad)" />
-      <line x1="20" y1="25" x2="22" y2="46" stroke="rgba(245,240,224,0.5)" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export default function ShowsGigs() {
   const head = useReveal();
 
@@ -69,9 +60,6 @@ export default function ShowsGigs() {
             Shows
             <em>&amp; gigs.</em>
           </h2>
-          <p className={`sg-intro reveal-up delay-2 ${head.isVisible ? "visible" : ""}`}>
-            A trail of stages, one season at a time.
-          </p>
         </div>
 
         <div className="sg-timeline">
@@ -82,63 +70,61 @@ export default function ShowsGigs() {
           </div>
         </div>
       </div>
-
-      {/* Shared leaf gradient def */}
-      <svg width="0" height="0" aria-hidden style={{ position: "absolute" }}>
-        <defs>
-          <linearGradient id="sgLeafGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3d7a1a" />
-            <stop offset="55%" stopColor="#c9a84c" />
-            <stop offset="100%" stopColor="#d4622a" />
-          </linearGradient>
-        </defs>
-      </svg>
     </section>
   );
 }
 
 function TimelineEntry({ show }: { show: Show }) {
   const { ref, isVisible } = useReveal();
-  const [open, setOpen] = useState(false);
+  // Hover on fine pointers; tap toggles as a fallback on touch devices.
+  const [active, setActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   return (
     <div
       ref={ref}
-      className={`sg-entry reveal-up ${isVisible ? "visible" : ""} ${open ? "open" : ""}`}
+      className={`sg-entry reveal-up ${isVisible ? "visible" : ""} ${active ? "active" : ""}`}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
     >
       <div className="sg-node" aria-hidden>
-        <LeafNode />
+        <span className="sg-node-dot" />
       </div>
 
       <button
         type="button"
         className="sg-info"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
+        onClick={() => setActive((o) => !o)}
+        aria-expanded={active}
       >
         <span className="sg-year">{show.year}</span>
         <span className="sg-title">{show.title}</span>
         <span className="sg-venue">{show.venue}</span>
         <span className="sg-toggle">
-          <span className="sg-toggle-icon">{open ? "×" : "+"}</span>
-          {open ? "Close" : "View"}
+          <span className="sg-toggle-icon">{active ? "×" : "+"}</span>
+          {active ? "Hide" : "View"}
         </span>
       </button>
 
-      <div className="sg-media">
-        <div className="sg-media-inner">
-          {open && (
-            <Image
-              src={encodeURI(show.image)}
-              alt={`${show.title} — ${show.venue}, ${show.year}`}
-              width={760}
-              height={500}
-              className="sg-media-img"
-              sizes="(max-width: 768px) 100vw, 42vw"
-            />
-          )}
-        </div>
-      </div>
+      {/* Full-size preview — portaled to <body> so it escapes the timeline's
+          transforms/overflow and fills the viewport. Fades in/out on hover. */}
+      {mounted &&
+        createPortal(
+          <div className={`sg-popup ${active ? "show" : ""}`} aria-hidden={!active}>
+            <div className="sg-popup-inner">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={encodeURI(show.image)}
+                alt={`${show.title} — ${show.venue}, ${show.year}`}
+                className="sg-popup-img"
+                draggable={false}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

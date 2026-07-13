@@ -22,12 +22,6 @@ interface TeamMember {
 
 const members: TeamMember[] = [
   {
-    name: "Sam Suen",
-    funFact: "Opened for Ted Park at 19",
-    role: "Artist / Performer",
-    imageSrc: "/images/rapping1.jpeg",
-  },
-  {
     name: "Granger Wang",
     funFact: "Shoots on film too",
     role: "Photographer / Media",

@@ -29,49 +29,14 @@
   background: linear-gradient(to left, transparent, rgba(201, 168, 76, 0.45));
 }
 
-/* ── Center emblem leaf ── */
-.emblem {
-  width: 26px;
-  height: auto;
+/* ── Center emblem dot ── */
+.dot {
+  width: 5px;
+  height: 5px;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.25));
-  animation: emblemSway 6s ease-in-out infinite;
-  transform-origin: 50% 0%;
-}
-@keyframes emblemSway {
-  0%, 100% { transform: rotate(-4deg); }
-  50%      { transform: rotate(4deg); }
-}
-
-/* ── Ambient drifting leaves ── */
-.drift {
-  position: absolute;
-  top: 0;
-  opacity: 0.9;
-}
-.driftLeaf {
-  width: 18px;
-  height: auto;
-}
-
-.drift1 { left: 12%;  animation: driftA 13s ease-in-out infinite; }
-.drift2 { left: 30%;  animation: driftB 17s ease-in-out infinite; }
-.drift3 { right: 28%; animation: driftA 15s ease-in-out infinite reverse; }
-.drift4 { right: 10%; animation: driftB 19s ease-in-out infinite; }
-
-.drift2 .driftLeaf { width: 14px; }
-.drift3 .driftLeaf { width: 22px; }
-.drift4 .driftLeaf { width: 13px; }
-
-@keyframes driftA {
-  0%   { transform: translate(0, 18px) rotate(0deg); }
-  50%  { transform: translate(16px, 70px) rotate(40deg); }
-  100% { transform: translate(0, 18px) rotate(0deg); }
-}
-@keyframes driftB {
-  0%   { transform: translate(0, 60px) rotate(10deg); }
-  50%  { transform: translate(-14px, 14px) rotate(-30deg); }
-  100% { transform: translate(0, 60px) rotate(10deg); }
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.55);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.25);
 }
 
 /* ============================================
@@ -80,11 +45,4 @@
 @media (max-width: 768px) {
   .divider { height: 64px; gap: 0.9rem; }
   .rule { flex-basis: 90px; }
-  .drift1 { left: 8%; }
-  .drift4 { right: 6%; }
-  .drift2, .drift3 { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .emblem, .drift { animation: none; }
 }
