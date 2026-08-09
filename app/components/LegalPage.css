@@ -1,0 +1,116 @@
+/* ============================================
+   Legal pages — Privacy & Terms
+   Long-form reading. Narrow measure, generous
+   line height, minimal ornament.
+   ============================================ */
+
+.legal {
+  min-height: 100vh;
+  padding: 4rem var(--container-padding) 5rem;
+}
+
+.legal-container {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.legal-back {
+  display: inline-block;
+  margin-bottom: 3rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s var(--ease-out-quart);
+}
+
+.legal-back:hover {
+  color: var(--color-text);
+  border-bottom-color: rgba(240, 235, 224, 0.3);
+}
+
+.legal-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.legal-updated {
+  margin-bottom: 3rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.legal-body h2 {
+  margin: 2.75rem 0 0.875rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.legal-body h2:first-child {
+  margin-top: 0;
+}
+
+.legal-body p,
+.legal-body li {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgba(240, 235, 224, 0.72);
+}
+
+.legal-body p {
+  margin-bottom: 1rem;
+}
+
+.legal-body ul {
+  margin: 0 0 1rem 1.25rem;
+}
+
+.legal-body li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.legal-body strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.legal-body a {
+  color: var(--color-gold);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+}
+
+.legal-body a:hover {
+  border-bottom-color: var(--color-gold);
+}
+
+/* Callout for the STOP/HELP block carriers look for */
+.legal-callout {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 2px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+}
+
+.legal-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+  color: var(--color-text-subtle);
+}

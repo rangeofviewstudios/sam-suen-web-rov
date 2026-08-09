@@ -66,6 +66,7 @@ export default function Footer() {
             <a href="#music-video">Video</a>
             <a href="#shows-gigs">Photos</a>
             <a href="#portfolio">Portfolio</a>
+            <a href="#booking">Booking</a>
           </nav>
           <div className="footer-contact">
             <a
@@ -128,6 +129,12 @@ export default function Footer() {
               className="footer-wordmark"
             />
             <p className="footer-copy">&copy; 2026 Sam Suen. All rights reserved.</p>
+            {/* Required by carriers: consent terms must be reachable sitewide. */}
+            <p className="footer-legal">
+              <a href="/privacy">Privacy</a>
+              <span aria-hidden="true"> · </span>
+              <a href="/terms">Terms</a>
+            </p>
           </div>
           <a href="https://www.rovstudios.com/" target="_blank" rel="noopener noreferrer" className="footer-rov">
             <span className="footer-rov-text">Curated with intention by</span>

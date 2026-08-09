@@ -77,11 +77,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${bebas.variable} ${dmSans.variable} ${norwige.variable} ${roboto.variable}`}
-        suppressHydrationWarning
-      >
+    // Font variables live on <html>, not <body>: globals.css defines
+    // --font-display / --font-body on :root in terms of them, and a :root
+    // token can't reference a variable that only exists further down the
+    // tree — it resolves to nothing and silently falls back to Tailwind's
+    // default sans.
+    <html
+      lang="en"
+      className={`${bebas.variable} ${dmSans.variable} ${norwige.variable} ${roboto.variable}`}
+    >
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>

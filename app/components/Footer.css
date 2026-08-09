@@ -157,6 +157,23 @@
   letter-spacing: 0.06em;
 }
 
+.footer-legal {
+  margin-top: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-subtle);
+}
+
+.footer-legal a {
+  color: var(--color-text-subtle);
+  transition: color 0.25s var(--ease-out-quart);
+}
+
+.footer-legal a:hover {
+  color: var(--color-text-muted);
+}
+
 /* ── Wordmark lockup ── */
 .footer-mark {
   display: flex;

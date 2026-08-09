@@ -8,6 +8,8 @@ import MusicVideo from "./components/MusicVideo";
 import ShowsGigs from "./components/ShowsGigs";
 import SectionDivider from "./components/SectionDivider";
 import PartnerStrip from "./components/PartnerStrip";
+import FanSignup from "./components/FanSignup";
+import BookingForm from "./components/BookingForm";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import FloatingListenPill from "./components/FloatingListenPill";
@@ -28,6 +30,8 @@ export default function Home() {
       <SectionDivider />
       <Portfolio />
       <PartnerStrip />
+      <FanSignup />
+      <BookingForm />
       <Footer />
       <FloatingListenPill />
       <MobileStreamingPopup />

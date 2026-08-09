@@ -1,0 +1,223 @@
+/* ============================================
+   Fan Signup — SMS / email early access
+   Two variants: `section` (homepage block)
+   and `inline` (slim, inside the /early hub).
+   ============================================ */
+
+.fs {
+  position: relative;
+}
+
+.fs-section {
+  padding: 4.5rem var(--container-padding);
+}
+
+.fs-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 2.75rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.fs-inline .fs-inner {
+  padding: 2rem 1.5rem;
+  background: var(--color-bg-elevated);
+}
+
+@media (max-width: 640px) {
+  .fs-inner { padding: 1.75rem 1.25rem; }
+}
+
+.fs-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.875rem;
+}
+
+.fs-copy {
+  max-width: 44ch;
+  margin: 0 auto 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* ── Fields ── */
+.fs-form {
+  text-align: left;
+}
+
+.fs-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 560px) {
+  .fs-fields { grid-template-columns: 1fr; }
+}
+
+.fs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.fs-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 224, 0.55);
+}
+
+.fs-input {
+  width: 100%;
+  padding: 0.8125rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color 0.25s var(--ease-out-quart),
+    box-shadow   0.25s var(--ease-out-quart);
+}
+
+.fs-input::placeholder { color: var(--color-text-subtle); }
+
+.fs-input:focus {
+  outline: none;
+  border-color: rgba(201, 168, 76, 0.55);
+  box-shadow: 0 0 0 3px var(--color-gold-soft);
+}
+
+.fs-input.has-error {
+  border-color: rgba(212, 98, 42, 0.7);
+}
+
+.fs-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  color: #e2762f;
+}
+
+/* ── Consent ──
+   Small type is intentional but must stay legible: carriers review this
+   block during toll-free verification, so it is never visually hidden. */
+.fs-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.fs-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.fs-consent-copy {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(240, 235, 224, 0.5);
+}
+
+.fs-consent-copy a {
+  color: var(--color-gold);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+}
+
+.fs-consent-copy a:hover {
+  border-color: var(--color-gold);
+}
+
+.fs-form-error {
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #f0c9b4;
+  background: rgba(212, 98, 42, 0.1);
+  border: 1px solid rgba(212, 98, 42, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Submit ── */
+.fs-submit {
+  width: 100%;
+  padding: 0.9375rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease-out-quart),
+    transform  0.25s var(--ease-out-quart);
+}
+
+.fs-submit:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.fs-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* ── Honeypot ── */
+.fs-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ── Done state ── */
+.fs-done {
+  text-align: center;
+}
+
+.fs-done-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: var(--color-pine);
+  background: var(--color-pine-soft);
+  border: 1px solid rgba(61, 122, 26, 0.35);
+  border-radius: 999px;
+}
+
+.fs-done-copy {
+  font-size: 1.0625rem;
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fs-submit, .fs-input { transition: none; }
+  .fs-submit:hover:not(:disabled) { transform: none; }
+}

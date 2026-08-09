@@ -1,0 +1,287 @@
+/* ============================================
+   Booking / Inquiry Form
+   Sits between the partner strip and the footer.
+   ============================================ */
+
+.bf {
+  padding: 5rem var(--container-padding) 6rem;
+  position: relative;
+}
+
+.bf-container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.bf-header {
+  margin-bottom: 3rem;
+}
+
+.bf-intro {
+  max-width: 46ch;
+  margin-bottom: 3rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* ── Form shell ── */
+.bf-form {
+  position: relative;
+  padding: 2.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 640px) {
+  .bf-form { padding: 1.5rem 1.25rem; }
+}
+
+/* Warm light leak behind the card, echoing the About section */
+.bf-form::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%,  rgba(201, 168, 76, 0.16), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 90% 90%, rgba(212, 98,  42, 0.14), transparent 65%);
+  filter: blur(48px);
+}
+
+.bf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1.75rem;
+}
+
+@media (max-width: 640px) {
+  .bf-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+
+.bf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.bf-field-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Labels ── */
+.bf-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 224, 0.55);
+}
+
+.bf-req {
+  color: var(--color-ember);
+  margin-left: 0.15em;
+}
+
+.bf-opt {
+  margin-left: 0.35em;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--color-text-subtle);
+  text-transform: lowercase;
+}
+
+/* ── Inputs ── */
+.bf-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color 0.25s var(--ease-out-quart),
+    background    0.25s var(--ease-out-quart),
+    box-shadow    0.25s var(--ease-out-quart);
+}
+
+.bf-input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.bf-input:hover {
+  border-color: var(--color-border-hover);
+}
+
+.bf-input:focus {
+  outline: none;
+  background: var(--color-surface);
+  border-color: rgba(212, 98, 42, 0.55);
+  box-shadow: 0 0 0 3px var(--color-ember-soft);
+}
+
+.bf-input.has-error {
+  border-color: rgba(212, 98, 42, 0.7);
+}
+
+.bf-textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.65;
+}
+
+/* Native select arrow is unstyleable across browsers — draw our own. */
+.bf-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+  background-image: linear-gradient(45deg, transparent 50%, rgba(240, 235, 224, 0.5) 50%),
+                    linear-gradient(135deg, rgba(240, 235, 224, 0.5) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% + 1px), calc(100% - 13px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Dropdown options render in the OS layer — force a readable dark palette */
+.bf-select option {
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+}
+
+.bf-error {
+  font-size: 0.8125rem;
+  color: #e2762f;
+}
+
+.bf-form-error {
+  margin-top: 1.5rem;
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #f0c9b4;
+  background: rgba(212, 98, 42, 0.1);
+  border: 1px solid rgba(212, 98, 42, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Actions ── */
+.bf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 2rem;
+}
+
+.bf-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9375rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background  0.25s var(--ease-out-quart),
+    transform   0.25s var(--ease-out-quart),
+    box-shadow  0.25s var(--ease-out-quart);
+}
+
+.bf-submit:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px var(--color-accent-glow);
+}
+
+.bf-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.bf-submit-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.bf-fallback {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.bf-fallback a {
+  color: var(--color-gold);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+  transition: border-color 0.25s var(--ease-out-quart);
+}
+
+.bf-fallback a:hover {
+  border-color: var(--color-gold);
+}
+
+/* ── Honeypot: off-screen, never focusable, invisible to AT ── */
+.bf-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ── Success state ── */
+.bf-success {
+  padding: 4rem 2.5rem;
+  text-align: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.bf-success-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1.5rem;
+  color: var(--color-pine);
+  background: var(--color-pine-soft);
+  border: 1px solid rgba(61, 122, 26, 0.35);
+  border-radius: 999px;
+  font-size: 1.5rem;
+}
+
+.bf-success-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.bf-success-copy {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Respect reduced-motion for the button lift */
+@media (prefers-reduced-motion: reduce) {
+  .bf-submit,
+  .bf-input {
+    transition: none;
+  }
+  .bf-submit:hover:not(:disabled) {
+    transform: none;
+  }
+}
