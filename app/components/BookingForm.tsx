@@ -47,7 +47,7 @@ export default function BookingForm() {
             <div className="bf-success-mark">
               <FiCheck />
             </div>
-            <h2 className="bf-success-title">Message sent</h2>
+            <h2 className="bf-success-title">Sent</h2>
             <p className="bf-success-copy">{state.message}</p>
           </div>
         </div>
@@ -67,8 +67,8 @@ export default function BookingForm() {
           <h2
             className={`section-title reveal-up delay-1 ${head.isVisible ? "visible" : ""}`}
           >
-            Book
-            <em>the room.</em>
+            Booking
+            <em>&amp; inquiries.</em>
           </h2>
         </div>
 
@@ -77,8 +77,7 @@ export default function BookingForm() {
           className={`bf-body reveal-up delay-2 ${body.isVisible ? "visible" : ""}`}
         >
           <p className="bf-intro">
-            Shows, features, press — send the details and Sam will get back to
-            you.
+            Shows, features, press. Send the details and we&apos;ll reply.
           </p>
 
           <form action={formAction} className="bf-form" noValidate>
@@ -192,7 +191,7 @@ export default function BookingForm() {
                   rows={5}
                   maxLength={4000}
                   className={`bf-input bf-textarea ${err.message ? "has-error" : ""}`}
-                  placeholder="Tell us about the show, the vibe, who else is on the bill…"
+                  placeholder="Date, venue, who else is playing, what you're offering."
                   defaultValue={prev.message}
                   aria-invalid={Boolean(err.message)}
                 />
@@ -210,8 +209,8 @@ export default function BookingForm() {
               <SubmitButton />
               <p className="bf-fallback">
                 Or email{" "}
-                <a href="mailto:contact@rovstudios.com">contact@rovstudios.com</a>{" "}
-                directly.
+                <a href="mailto:contact@rovstudios.com">contact@rovstudios.com</a>
+                .
               </p>
             </div>
           </form>

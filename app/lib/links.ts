@@ -18,6 +18,14 @@ export const LINKS = {
 export const NEW_RELEASE = {
   title: "Efforts and Sincerity",
   releaseDate: "2026-08-14",
+  /**
+   * DistroKid HyperFollow. Before release day this is a pre-save — one tap
+   * adds the track to the listener's library the moment it drops. After
+   * release the same URL becomes a normal "listen on any platform" page,
+   * so it never needs swapping out.
+   */
+  presave:
+    "https://distrokid.com/hyperfollow/samsuenandbasu/efforts-and-sincerity?ref=release",
   soundcloud:
     "https://soundcloud.com/sam-suen-746400269/efforts-and-sincerity",
   spotify: "",

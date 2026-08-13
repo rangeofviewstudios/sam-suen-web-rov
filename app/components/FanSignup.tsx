@@ -4,17 +4,14 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { FiCheck } from "react-icons/fi";
 import { subscribeFan } from "../actions/subscribe";
-import {
-  SMS_CONSENT_COPY,
-  initialSubscribeState,
-} from "../actions/subscribe-types";
+import { initialSubscribeState } from "../actions/subscribe-types";
 import "./FanSignup.css";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" className="fs-submit" disabled={pending}>
-      {pending ? "Joining…" : "Get early access"}
+      {pending ? "Signing up…" : "Sign up"}
     </button>
   );
 }
@@ -28,8 +25,8 @@ interface FanSignupProps {
 
 export default function FanSignup({
   variant = "section",
-  heading = "Hear it first.",
-  copy = "Early access to new songs, show announcements before they go public. No spam, and you can leave any time.",
+  heading = "New music first.",
+  copy = "An email when a song drops or a show goes on sale. Nothing else. Unsubscribe any time.",
 }: FanSignupProps) {
   const [state, formAction] = useActionState(
     subscribeFan,
@@ -71,56 +68,22 @@ export default function FanSignup({
             />
           </div>
 
-          <div className="fs-fields">
-            <div className="fs-field">
-              <label className="fs-label" htmlFor="fs-phone">
-                Phone
-              </label>
-              <input
-                id="fs-phone"
-                type="tel"
-                name="phone"
-                inputMode="tel"
-                autoComplete="tel"
-                placeholder="(404) 555-0134"
-                defaultValue={prev.phone}
-                className={`fs-input ${err.phone ? "has-error" : ""}`}
-                aria-invalid={Boolean(err.phone)}
-              />
-              {err.phone && <span className="fs-error">{err.phone}</span>}
-            </div>
-
-            <div className="fs-field">
-              <label className="fs-label" htmlFor="fs-email">
-                Email
-              </label>
-              <input
-                id="fs-email"
-                type="email"
-                name="email"
-                autoComplete="email"
-                placeholder="you@email.com"
-                defaultValue={prev.email}
-                className={`fs-input ${err.email ? "has-error" : ""}`}
-                aria-invalid={Boolean(err.email)}
-              />
-              {err.email && <span className="fs-error">{err.email}</span>}
-            </div>
-          </div>
-
-          <label className="fs-consent">
+          <div className="fs-field">
+            <label className="fs-label" htmlFor="fs-email">
+              Email
+            </label>
             <input
-              type="checkbox"
-              name="consent"
-              className="fs-checkbox"
-              aria-invalid={Boolean(err.consent)}
+              id="fs-email"
+              type="email"
+              name="email"
+              autoComplete="email"
+              placeholder="you@email.com"
+              defaultValue={prev.email}
+              className={`fs-input ${err.email ? "has-error" : ""}`}
+              aria-invalid={Boolean(err.email)}
             />
-            <span className="fs-consent-copy">
-              {SMS_CONSENT_COPY}{" "}
-              <a href="/terms">Terms</a> &amp; <a href="/privacy">Privacy</a>.
-            </span>
-          </label>
-          {err.consent && <span className="fs-error">{err.consent}</span>}
+            {err.email && <span className="fs-error">{err.email}</span>}
+          </div>
 
           {state.status === "error" && state.message && (
             <p className="fs-form-error" role="alert">
@@ -129,6 +92,11 @@ export default function FanSignup({
           )}
 
           <SubmitButton />
+
+          <p className="fs-fineprint">
+            We&apos;ll only email about new music and shows. See our{" "}
+            <a href="/privacy">Privacy Policy</a>.
+          </p>
         </form>
       </div>
     </div>

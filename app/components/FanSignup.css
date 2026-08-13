@@ -1,5 +1,5 @@
 /* ============================================
-   Fan Signup — SMS / email early access
+   Fan Signup — email list
    Two variants: `section` (homepage block)
    and `inline` (slim, inside the /early hub).
    ============================================ */
@@ -53,18 +53,8 @@
   text-align: left;
 }
 
-.fs-fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-@media (max-width: 560px) {
-  .fs-fields { grid-template-columns: 1fr; }
-}
-
 .fs-field {
+  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -112,38 +102,21 @@
   color: #e2762f;
 }
 
-/* ── Consent ──
-   Small type is intentional but must stay legible: carriers review this
-   block during toll-free verification, so it is never visually hidden. */
-.fs-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
-}
-
-.fs-checkbox {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  accent-color: var(--color-accent);
-  cursor: pointer;
-}
-
-.fs-consent-copy {
+/* ── Fine print under the button ── */
+.fs-fineprint {
+  margin-top: 0.875rem;
   font-size: 0.75rem;
   line-height: 1.6;
-  color: rgba(240, 235, 224, 0.5);
+  text-align: center;
+  color: rgba(240, 235, 224, 0.4);
 }
 
-.fs-consent-copy a {
+.fs-fineprint a {
   color: var(--color-gold);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
 }
 
-.fs-consent-copy a:hover {
+.fs-fineprint a:hover {
   border-color: var(--color-gold);
 }
 

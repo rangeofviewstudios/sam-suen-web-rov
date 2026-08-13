@@ -79,6 +79,47 @@
   margin-bottom: 2rem;
 }
 
+/* ── Pre-save (primary action) ──
+   Visually dominant on purpose: this is the one action that matters
+   before release day. */
+.ea-presave {
+  display: block;
+  padding: 1.125rem 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  transition:
+    background 0.25s var(--ease-out-quart),
+    transform  0.25s var(--ease-out-quart),
+    box-shadow 0.25s var(--ease-out-quart);
+}
+
+.ea-presave:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -12px var(--color-accent-glow);
+}
+
+.ea-presave:active {
+  transform: translateY(0);
+}
+
+.ea-presave-label {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.ea-presave-sub {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
 /* ── Link buttons ── */
 .ea-links {
   display: flex;
@@ -217,6 +258,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ea-link { transition: none; }
-  .ea-link:hover { transform: none; }
+  .ea-link, .ea-presave { transition: none; }
+  .ea-link:hover, .ea-presave:hover { transform: none; }
 }

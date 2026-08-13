@@ -80,7 +80,7 @@ export function renderBookingInquiryHtml(inquiry: BookingInquiry): string {
                 ${esc(inquiry.inquiryType)}
               </p>
               <p style="margin:8px 0 0 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:${MUTED};">
-                ${esc(stamp)} ET &middot; samsuen.com
+                ${esc(stamp)} ET
               </p>
             </td>
           </tr>
@@ -125,7 +125,7 @@ export function renderBookingInquiryHtml(inquiry: BookingInquiry): string {
           <!-- Footer -->
           <tr>
             <td style="padding:18px 32px;border-top:1px solid ${BORDER};font-family:Helvetica,Arial,sans-serif;font-size:11px;color:${MUTED};">
-              Sent by the booking form on samsuen.com &middot; built by Range Of View
+              Sent by the booking form &middot; built by Range Of View
             </td>
           </tr>
 
@@ -157,6 +157,6 @@ export function renderBookingInquiryText(inquiry: BookingInquiry): string {
     line("Venue / city", inquiry.venue) +
     line("Budget", inquiry.budget) +
     `\nMESSAGE\n${inquiry.message}\n\n` +
-    `--\nSent by the booking form on samsuen.com\nReply to this email to reach them directly.`
+    `--\nSent by the booking form.\nReply to this email to reach them directly.`
   );
 }

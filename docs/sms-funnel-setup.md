@@ -1,7 +1,16 @@
-# SMS Funnel — Klaviyo Setup
+# SMS Funnel — Klaviyo Setup (PARKED)
 
-Everything in code is done. This covers the parts that live in Klaviyo's
-dashboard and with the carriers, which can't be done from the repo.
+> **This is not active.** SMS was dropped before the August 2026 release
+> because carrier toll-free verification takes 1–3+ weeks and could not clear
+> in time. The signup form is **email-only** today, and the site collects no
+> phone numbers.
+>
+> Kept because the research and copy are still good if SMS gets picked back
+> up. To revive it you would need to: re-add the phone field and TCPA consent
+> checkbox to `FanSignup.tsx`, restore the `sms` subscription block and E.164
+> normalisation in `subscribe.ts`, and put the text-message program section
+> back into `/terms` plus the mobile-information clause in `/privacy`.
+> Everything below then applies as written.
 
 Site side: the signup form posts to `subscribeFan` in
 [`app/actions/subscribe.ts`](../app/actions/subscribe.ts), which calls Klaviyo's
@@ -112,10 +121,10 @@ Klaviyo surfaces this as **Toll-free verification** under Settings → SMS
 
 **Sample messages** — give both. They must match what you actually send:
 
-> Welcome to the inside track. Early access to new Sam Suen songs and shows,
-> before they go public: DOMAIN/early Reply STOP to opt out.
+> Sam Suen here. You're on the list — you'll get a text when a song drops or
+> a show goes on sale. Everything's here: DOMAIN/early Reply STOP to opt out.
 
-> Sam Suen — "Efforts and Sincerity" is out now. Listen: DOMAIN/early
+> Sam Suen: "Efforts and Sincerity" is out now. Listen: DOMAIN/early
 > Reply STOP to opt out.
 
 If a **screenshot of the opt-in form** is requested, a mobile screenshot of
@@ -148,8 +157,8 @@ they want.
 
 ### Message 1 — immediate (SMS)
 
-> Welcome to the inside track. Early access to new Sam Suen songs and shows,
-> before they go public: https://www.samsuen.com/early
+> Sam Suen here. You're on the list — you'll get a text when a song drops or
+> a show goes on sale. Everything's here: DOMAIN/early
 >
 > Reply STOP to opt out.
 
@@ -159,7 +168,7 @@ Don't put this in the welcome flow. Send it as a **one-off Campaign** scheduled
 for release day, so people who signed up earlier in the week still get it.
 
 > Sam Suen — "Efforts and Sincerity" is out now.
-> Listen: https://www.samsuen.com/early
+> Listen: DOMAIN/early
 >
 > Reply STOP to opt out.
 

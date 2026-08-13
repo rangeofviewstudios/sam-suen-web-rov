@@ -85,32 +85,32 @@ export async function submitBookingInquiry(
   // ── Spam guard 1: honeypot. Real users never see or fill this. ──
   if (clean(formData.get("company"))) {
     // Report success so bots don't learn they were caught.
-    return { status: "success", message: "Thanks — your message is on its way." };
+    return { status: "success", message: "Sam will get back to you." };
   }
 
   // ── Spam guard 2: submitted implausibly fast after render. ──
   const renderedAt = Number(formData.get("renderedAt"));
   if (Number.isFinite(renderedAt) && Date.now() - renderedAt < 2000) {
-    return { status: "success", message: "Thanks — your message is on its way." };
+    return { status: "success", message: "Sam will get back to you." };
   }
 
   // ── Validation ──
   const fieldErrors: Record<string, string> = {};
 
-  if (!values.name) fieldErrors.name = "Let us know who you are.";
-  if (!values.email) fieldErrors.email = "We need an email to reply to.";
+  if (!values.name) fieldErrors.name = "Add your name.";
+  if (!values.email) fieldErrors.email = "Add an email so we can reply.";
   else if (!looksLikeEmail(values.email))
-    fieldErrors.email = "That email doesn't look right.";
+    fieldErrors.email = "That email isn't valid.";
   if (!values.inquiryType || !INQUIRY_TYPES.includes(values.inquiryType as InquiryType))
-    fieldErrors.inquiryType = "Pick what this is about.";
-  if (!values.message) fieldErrors.message = "Tell us a little about it.";
+    fieldErrors.inquiryType = "Pick one.";
+  if (!values.message) fieldErrors.message = "Add some details.";
   else if (values.message.length < 10)
-    fieldErrors.message = "A bit more detail helps.";
+    fieldErrors.message = "Add a bit more.";
 
   if (Object.keys(fieldErrors).length > 0) {
     return {
       status: "error",
-      message: "Please fix the highlighted fields.",
+      message: "Some fields need fixing.",
       fieldErrors,
       values,
     };
@@ -127,7 +127,7 @@ export async function submitBookingInquiry(
     return {
       status: "error",
       message:
-        "That's a few messages in a short window. Give it a few minutes, or email contact@rovstudios.com directly.",
+        "Too many messages in a short window. Wait a few minutes, or email contact@rovstudios.com.",
       values,
     };
   }
@@ -144,7 +144,7 @@ export async function submitBookingInquiry(
     return {
       status: "error",
       message:
-        "The form isn't accepting messages right now. Please email contact@rovstudios.com and we'll pick it up there.",
+        "The form is down. Email contact@rovstudios.com instead.",
       values,
     };
   }
@@ -170,7 +170,7 @@ export async function submitBookingInquiry(
       return {
         status: "error",
         message:
-          "That didn't go through. Please email contact@rovstudios.com directly — we don't want to lose your message.",
+          "That didn't send. Email contact@rovstudios.com so your message isn't lost.",
         values,
       };
     }
@@ -179,13 +179,13 @@ export async function submitBookingInquiry(
     return {
       status: "error",
       message:
-        "That didn't go through. Please email contact@rovstudios.com directly — we don't want to lose your message.",
+        "That didn't send. Email contact@rovstudios.com so your message isn't lost.",
       values,
     };
   }
 
   return {
     status: "success",
-    message: "Got it. Sam will get back to you soon.",
+    message: "Sam will get back to you.",
   };
 }

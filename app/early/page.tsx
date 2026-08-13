@@ -9,7 +9,7 @@ import "./early.css";
 export const metadata: Metadata = {
   title: "Early Access — Sam Suen",
   description:
-    "Hear Sam Suen's new music first. Early access, show announcements, and every place to listen — in one place.",
+    "Sam Suen's new single, every place to listen, and sign-up for a text when the next song drops.",
   // This page is a destination for text messages, not something we want
   // competing with the homepage in search results.
   robots: { index: false, follow: true },
@@ -24,36 +24,36 @@ interface ListenLink {
 
 export default function EarlyAccessPage() {
   const releaseLinks: ListenLink[] = [
-    {
-      label: "SoundCloud",
-      sublabel: "Listen now",
-      href: NEW_RELEASE.soundcloud,
-      icon: <SiSoundcloud />,
-    },
     NEW_RELEASE.spotify && {
       label: "Spotify",
-      sublabel: "Stream & save",
+      sublabel: "Stream",
       href: NEW_RELEASE.spotify,
       icon: <SiSpotify />,
     },
     NEW_RELEASE.appleMusic && {
       label: "Apple Music",
-      sublabel: "Stream & save",
+      sublabel: "Stream",
       href: NEW_RELEASE.appleMusic,
       icon: <SiApplemusic />,
+    },
+    {
+      label: "SoundCloud",
+      sublabel: "Listen",
+      href: NEW_RELEASE.soundcloud,
+      icon: <SiSoundcloud />,
     },
   ].filter(Boolean) as ListenLink[];
 
   const catalogLinks: ListenLink[] = [
     {
       label: "Spotify",
-      sublabel: "Full catalog",
+      sublabel: "All songs",
       href: LINKS.spotify,
       icon: <SiSpotify />,
     },
     {
       label: "Apple Music",
-      sublabel: "Full catalog",
+      sublabel: "All songs",
       href: LINKS.appleMusic,
       icon: <SiApplemusic />,
     },
@@ -86,12 +86,27 @@ export default function EarlyAccessPage() {
           <span className="ea-tag">New single</span>
           <h1 className="ea-title">{NEW_RELEASE.title}</h1>
           <p className="ea-date">
-            <time dateTime={NEW_RELEASE.releaseDate}>August 14, 2026</time>
+            Out <time dateTime={NEW_RELEASE.releaseDate}>August 14</time>
           </p>
+
+          {/* Pre-save is the single most valuable action before release day:
+              it counts toward first-day streams on the platforms. Everything
+              else on this page is secondary to it. */}
+          <a
+            href={NEW_RELEASE.presave}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ea-presave"
+          >
+            <span className="ea-presave-label">Pre-save the single</span>
+            <span className="ea-presave-sub">
+              Spotify, Apple Music &amp; more — one tap
+            </span>
+          </a>
 
           <div className="ea-links">
             {releaseLinks.map((link) => (
-              <ListenButton key={link.label} link={link} primary />
+              <ListenButton key={link.label} link={link} />
             ))}
           </div>
         </section>
@@ -99,13 +114,13 @@ export default function EarlyAccessPage() {
         {/* ── Signup ── */}
         <FanSignup
           variant="inline"
-          heading="Get it first."
-          copy="New songs and show announcements, sent straight to you before they go public."
+          heading="Get the next one first."
+          copy="An email when a song drops or a show goes on sale. Nothing else."
         />
 
         {/* ── Everything else ── */}
         <section className="ea-more">
-          <h2 className="ea-more-title">More from Sam</h2>
+          <h2 className="ea-more-title">More</h2>
           <div className="ea-links">
             {catalogLinks.map((link) => (
               <ListenButton key={`${link.label}-${link.sublabel}`} link={link} />
@@ -114,8 +129,11 @@ export default function EarlyAccessPage() {
         </section>
 
         <footer className="ea-footer">
+          {/* Label stays domain-agnostic: the href is relative and works
+              anywhere, whereas a hardcoded domain would read as a broken
+              promise while samsuen.com is unresolved. */}
           <a href="/" className="ea-home">
-            samsuen.com
+            Sam Suen
           </a>
           <p className="ea-legal">
             <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>

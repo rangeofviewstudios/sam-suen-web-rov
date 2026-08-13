@@ -4,17 +4,17 @@ import "../components/LegalPage.css";
 export const metadata: Metadata = {
   title: "Privacy Policy — Sam Suen",
   description:
-    "How Sam Suen collects, uses, and protects information submitted through samsuen.com.",
+    "How Sam Suen collects, uses, and protects information submitted through this site.",
 };
 
-const UPDATED = "August 9, 2026";
+const UPDATED = "August 10, 2026";
 
 export default function PrivacyPage() {
   return (
     <main className="legal">
       <div className="legal-container">
         <a href="/" className="legal-back">
-          ← samsuen.com
+          ← Back to site
         </a>
 
         <h1 className="legal-title">Privacy Policy</h1>
@@ -22,9 +22,9 @@ export default function PrivacyPage() {
 
         <div className="legal-body">
           <p>
-            This policy explains what information samsuen.com collects, why it
-            is collected, and what is done with it. It covers the booking form
-            and the text message and email list.
+            This policy explains what information this site collects, why it is
+            collected, and what is done with it. It covers the booking form and
+            the email list.
           </p>
 
           <h2>What we collect</h2>
@@ -36,8 +36,8 @@ export default function PrivacyPage() {
               city, budget range, and the details of your message.
             </li>
             <li>
-              <strong>Early access signup:</strong> your mobile phone number
-              and/or email address, and the date and time you gave consent.
+              <strong>Email signup:</strong> your email address, and the date
+              and time you signed up.
             </li>
           </ul>
           <p>
@@ -53,22 +53,18 @@ export default function PrivacyPage() {
               can reply to you. They are not added to any marketing list.
             </li>
             <li>
-              Phone numbers and email addresses submitted through the early
-              access form are used to send you music releases, show
-              announcements, and early access links.
+              Email addresses submitted through the signup form are used to
+              send you music releases and show announcements.
             </li>
           </ul>
 
-          <h2>Mobile information and third parties</h2>
+          <h2>Third parties</h2>
           <div className="legal-callout">
             <p>
               <strong>
-                No mobile information will be sold or shared with third parties
-                or affiliates for marketing or promotional purposes.
-              </strong>{" "}
-              All of the above categories exclude text messaging originator
-              opt-in data and consent; this information will not be shared with
-              any third parties.
+                We do not sell your information, and we do not share it with
+                third parties for their own marketing or promotional purposes.
+              </strong>
             </p>
           </div>
           <p>
@@ -78,8 +74,8 @@ export default function PrivacyPage() {
           </p>
           <ul>
             <li>
-              <strong>Klaviyo</strong> — stores the email and SMS list and sends
-              those messages.
+              <strong>Klaviyo</strong> — stores the email list and sends those
+              messages.
             </li>
             <li>
               <strong>Resend</strong> — delivers booking form submissions to
@@ -93,20 +89,17 @@ export default function PrivacyPage() {
 
           <h2>Opting out</h2>
           <p>
-            You can leave the text message list at any time by replying{" "}
-            <strong>STOP</strong> to any message. Email messages include an
-            unsubscribe link at the bottom. You can also email us and ask to be
-            removed, or ask what information we hold about you and request that
-            we delete it.
+            Every email includes an unsubscribe link at the bottom. You can
+            also email us and ask to be removed, or ask what information we
+            hold about you and request that we delete it.
           </p>
 
           <h2>How long we keep it</h2>
           <p>
-            List subscriptions are kept until you unsubscribe. Consent records
-            are retained after an opt-out because we are required to
-            demonstrate that consent was properly obtained. Inquiry emails live
-            in Sam&apos;s inbox and are kept as ordinary business
-            correspondence.
+            List subscriptions are kept until you unsubscribe. A record of the
+            unsubscribe is retained so we don&apos;t email you again by
+            mistake. Inquiry emails live in Sam&apos;s inbox and are kept as
+            ordinary business correspondence.
           </p>
 
           <h2>Children</h2>
@@ -119,8 +112,8 @@ export default function PrivacyPage() {
           <h2>Changes</h2>
           <p>
             If this policy changes, the &ldquo;last updated&rdquo; date above
-            will change with it. Material changes affecting the text message
-            program will be communicated to subscribers.
+            will change with it. Material changes affecting the email list
+            will be communicated to subscribers.
           </p>
 
           <h2>Contact</h2>
