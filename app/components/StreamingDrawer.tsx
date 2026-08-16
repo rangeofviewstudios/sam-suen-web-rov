@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { SiSpotify, SiApplemusic } from "react-icons/si";
+import { SiSpotify, SiApplemusic, SiDiscord } from "react-icons/si";
 import { FiInstagram, FiMail } from "react-icons/fi";
 import { LINKS } from "../lib/links";
 import styles from "./StreamingDrawer.module.css";
@@ -30,6 +30,7 @@ const streamingLinks = [
 
 const socialLinks = [
   { name: "Instagram", href: LINKS.instagram, icon: FiInstagram },
+  { name: "Discord", href: LINKS.discord, icon: SiDiscord },
   { name: "Email", href: LINKS.email, icon: FiMail },
 ];
 

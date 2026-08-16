@@ -4,6 +4,12 @@ export const LINKS = {
   appleMusic:
     "https://music.apple.com/us/artist/sam-suen/1561994926",
   instagram: "https://www.instagram.com/samsuenofficial/",
+  /**
+   * Fan Discord. This must be a never-expiring, unlimited-use invite —
+   * Discord's default invites die after 7 days, which would quietly turn
+   * every placement on the site into a dead end.
+   */
+  discord: "https://discord.gg/ZyWebMkbTZ",
   email: "mailto:contact@rovstudios.com",
   rovStudios: "https://www.rovstudios.com/",
 } as const;

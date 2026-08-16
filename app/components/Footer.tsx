@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiInstagram, FiMail } from "react-icons/fi";
-import { SiSpotify, SiApplemusic } from "react-icons/si";
+import { SiSpotify, SiApplemusic, SiDiscord } from "react-icons/si";
+import { LINKS } from "../lib/links";
 import Ribbons from "./Ribbons";
 import "./Footer.css";
 
@@ -95,6 +96,15 @@ export default function Footer() {
             >
               <SiApplemusic className="footer-contact-icon" />
               Apple Music
+            </a>
+            <a
+              href={LINKS.discord}
+              className="footer-contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiDiscord className="footer-contact-icon" />
+              Discord
             </a>
             <div className="footer-contact-divider" />
             <a
