@@ -54,19 +54,26 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#08110b",
 };
 
 export const metadata: Metadata = {
   title: "SAM SUEN — Artist",
   description:
     "SAM SUEN — Atlanta-based Korean Chinese hip-hop artist. Emotional storytelling meets confident rap delivery.",
+  // All icons live in /public and are declared here, not via the app/ file
+  // convention — a file-convention app/favicon.ico silently overrides this
+  // block, which is how the old mark kept surviving icon updates.
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
 };
