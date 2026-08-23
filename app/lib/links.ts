@@ -9,7 +9,7 @@ export const LINKS = {
    * Discord's default invites die after 7 days, which would quietly turn
    * every placement on the site into a dead end.
    */
-  discord: "https://discord.gg/ZyWebMkbTZ",
+  discord: "https://discord.gg/EKGuRWJTM8",
   email: "mailto:contact@rovstudios.com",
   rovStudios: "https://www.rovstudios.com/",
 } as const;
